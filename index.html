@@ -19,7 +19,7 @@ box-sizing:border-box;
 body{
 font-family:'Poppins',sans-serif;
 background:#020617;
-color:white;
+color:#fff;
 overflow-x:hidden;
 min-height:100vh;
 position:relative;
@@ -36,106 +36,87 @@ overflow:hidden;
 
 .blur1{
 position:absolute;
-width:500px;
-height:500px;
+width:550px;
+height:550px;
 background:#2563eb;
 border-radius:50%;
-filter:blur(140px);
-top:-120px;
-left:-120px;
+filter:blur(150px);
+top:-160px;
+left:-150px;
 opacity:.65;
-animation:move1 10s infinite alternate ease-in-out;
 }
 
 .blur2{
 position:absolute;
-width:450px;
-height:450px;
+width:500px;
+height:500px;
 background:#9333ea;
 border-radius:50%;
-filter:blur(140px);
-bottom:-100px;
-right:-100px;
+filter:blur(150px);
+bottom:-140px;
+right:-140px;
 opacity:.55;
-animation:move2 12s infinite alternate ease-in-out;
 }
 
 .blur3{
 position:absolute;
-width:300px;
-height:300px;
-background:#0ea5e9;
+width:350px;
+height:350px;
+background:#06b6d4;
 border-radius:50%;
 filter:blur(120px);
 top:45%;
 left:50%;
 transform:translate(-50%,-50%);
-opacity:.28;
+opacity:.25;
 }
 
-@keyframes move1{
-0%{
-transform:translate(0,0);
-}
-100%{
-transform:translate(60px,60px);
-}
-}
-
-@keyframes move2{
-0%{
-transform:translate(0,0);
-}
-100%{
-transform:translate(-70px,-50px);
-}
-}
-
-/* MAIN */
+/* CONTAINER */
 
 .container{
 max-width:950px;
 margin:auto;
-padding:24px;
+padding:22px;
 }
+
+/* HEADER */
 
 .header{
 text-align:center;
-padding-top:20px;
+padding-top:15px;
 margin-bottom:35px;
-animation:fadeDown 1s ease;
 }
 
 .logo{
-width:110px;
-height:110px;
+width:115px;
+height:115px;
 margin:auto;
-border-radius:32px;
+border-radius:34px;
 background:linear-gradient(135deg,#2563eb,#9333ea);
 display:flex;
 align-items:center;
 justify-content:center;
-font-size:55px;
+font-size:58px;
 box-shadow:
-0 0 40px rgba(59,130,246,.45),
-0 0 90px rgba(147,51,234,.35);
-margin-bottom:20px;
+0 0 40px rgba(59,130,246,.4),
+0 0 100px rgba(147,51,234,.35);
+margin-bottom:22px;
 animation:float 3s ease-in-out infinite;
 }
 
 .title{
-font-size:62px;
+font-size:70px;
 font-weight:900;
-line-height:1.05;
-background:linear-gradient(90deg,#60a5fa,#c084fc);
+line-height:1;
+background:linear-gradient(90deg,#60a5fa,#d946ef);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
+margin-bottom:12px;
 }
 
 .subtitle{
-font-size:20px;
+font-size:22px;
 color:#cbd5e1;
-margin-top:14px;
 }
 
 /* SEARCH */
@@ -143,40 +124,39 @@ margin-top:14px;
 .search-box{
 margin-bottom:26px;
 position:sticky;
-top:12px;
+top:10px;
 z-index:999;
-backdrop-filter:blur(14px);
+backdrop-filter:blur(10px);
 }
 
 .search-input{
 width:100%;
-height:76px;
+height:78px;
 border:none;
 outline:none;
-padding:0 26px;
+padding:0 28px;
 border-radius:28px;
-background:rgba(15,23,42,.7);
+background:rgba(15,23,42,.75);
 backdrop-filter:blur(14px);
-color:white;
-font-size:26px;
-border:1px solid rgba(255,255,255,.06);
+font-size:27px;
+color:#fff;
+border:1px solid rgba(255,255,255,.05);
 transition:.35s;
-}
-
-.search-input:focus{
-border-color:#3b82f6;
-transform:scale(1.01);
-box-shadow:
-0 0 25px rgba(59,130,246,.25),
-0 0 60px rgba(147,51,234,.2);
-background:rgba(15,23,42,.92);
 }
 
 .search-input::placeholder{
 color:#94a3b8;
 }
 
-/* COUNTRY */
+.search-input:focus{
+border-color:#3b82f6;
+background:rgba(15,23,42,.95);
+box-shadow:
+0 0 30px rgba(59,130,246,.3),
+0 0 80px rgba(147,51,234,.25);
+}
+
+/* COUNTRY LIST */
 
 .country-list{
 display:flex;
@@ -184,22 +164,23 @@ flex-direction:column;
 gap:24px;
 }
 
+/* CARD */
+
 .card{
-background:rgba(15,23,42,.68);
+background:rgba(15,23,42,.7);
 backdrop-filter:blur(14px);
 border-radius:34px;
 padding:24px;
 border:1px solid rgba(255,255,255,.05);
 transition:.35s;
 overflow:hidden;
-animation:fadeUp .6s ease;
 }
 
 .card:hover{
 transform:translateY(-5px);
 box-shadow:
 0 0 35px rgba(59,130,246,.25),
-0 0 80px rgba(147,51,234,.18);
+0 0 90px rgba(147,51,234,.15);
 border-color:#3b82f6;
 }
 
@@ -215,33 +196,45 @@ cursor:pointer;
 display:flex;
 align-items:center;
 gap:18px;
+flex:1;
+min-width:0;
 }
 
 .flag{
-width:70px;
-height:70px;
+width:72px;
+height:72px;
 border-radius:50%;
 object-fit:cover;
 border:3px solid rgba(255,255,255,.08);
-box-shadow:0 0 25px rgba(255,255,255,.12);
+box-shadow:0 0 22px rgba(255,255,255,.12);
+flex-shrink:0;
+}
+
+.country-info{
+flex:1;
+min-width:0;
 }
 
 .country-name{
-font-size:34px;
+font-size:38px;
 font-weight:800;
+line-height:1.1;
+word-break:break-word;
 }
 
 .country-sub{
-font-size:17px;
+font-size:18px;
 color:#94a3b8;
-margin-top:5px;
+margin-top:6px;
 }
 
 .price{
-font-size:40px;
+font-size:44px;
 font-weight:900;
 color:#22c55e;
 text-shadow:0 0 18px rgba(34,197,94,.35);
+white-space:nowrap;
+flex-shrink:0;
 }
 
 /* EXPAND */
@@ -257,22 +250,24 @@ max-height:1000px;
 margin-top:24px;
 }
 
+/* NOTICE */
+
 .notice{
 background:rgba(255,255,255,.03);
-border:1px solid rgba(255,255,255,.06);
 padding:24px;
 border-radius:24px;
+border:1px solid rgba(255,255,255,.05);
 font-size:20px;
 line-height:1.9;
 color:#dbeafe;
-margin-bottom:22px;
+margin-bottom:24px;
 }
 
 .notice-title{
-font-size:26px;
+font-size:28px;
 font-weight:800;
 color:#facc15;
-margin-bottom:10px;
+margin-bottom:12px;
 }
 
 .green{
@@ -280,50 +275,53 @@ color:#22c55e;
 font-weight:800;
 }
 
+/* WORK BOX */
+
 .work-box{
 background:linear-gradient(135deg,#2563eb,#1d4ed8);
 padding:24px;
 border-radius:26px;
-margin-bottom:22px;
+margin-bottom:24px;
 box-shadow:0 0 40px rgba(37,99,235,.25);
 }
 
 .work-title{
 font-size:21px;
-margin-bottom:10px;
+margin-bottom:12px;
 }
 
 .work-price{
-font-size:52px;
+font-size:55px;
 font-weight:900;
 }
 
+/* CALCULATOR */
+
 .calculator{
 background:rgba(255,255,255,.03);
-border:1px solid rgba(255,255,255,.06);
 padding:24px;
-border-radius:26px;
+border-radius:24px;
+border:1px solid rgba(255,255,255,.05);
 }
 
 .calc-title{
-font-size:30px;
+font-size:32px;
 font-weight:800;
 margin-bottom:18px;
 }
 
 .calc-input{
 width:100%;
-height:70px;
+height:72px;
 border:none;
 outline:none;
 border-radius:20px;
 padding:0 22px;
-font-size:25px;
+font-size:26px;
 background:#0b132b;
-color:white;
+color:#fff;
+border:1px solid rgba(255,255,255,.05);
 margin-bottom:18px;
-border:1px solid transparent;
-transition:.3s;
 }
 
 .calc-input:focus{
@@ -333,17 +331,18 @@ box-shadow:0 0 25px rgba(59,130,246,.25);
 
 .calc-result{
 background:#0b132b;
-padding:22px;
+padding:24px;
 border-radius:22px;
 font-size:20px;
 line-height:2;
+word-break:break-word;
 }
 
 .result-total{
-font-size:46px;
+font-size:52px;
 font-weight:900;
 color:#22c55e;
-margin-top:10px;
+margin-top:12px;
 }
 
 /* FOOTER */
@@ -351,9 +350,9 @@ margin-top:10px;
 .footer{
 margin-top:45px;
 text-align:center;
-font-size:17px;
+padding-bottom:20px;
+font-size:18px;
 color:#cbd5e1;
-padding-bottom:25px;
 }
 
 .footer span{
@@ -361,7 +360,7 @@ font-weight:800;
 color:#60a5fa;
 }
 
-/* EMPTY */
+/* NO RESULT */
 
 .no-result{
 text-align:center;
@@ -370,79 +369,38 @@ font-size:30px;
 color:#94a3b8;
 }
 
-/* ANIMATION */
-
-@keyframes fadeUp{
-from{
-opacity:0;
-transform:translateY(25px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
-
-@keyframes fadeDown{
-from{
-opacity:0;
-transform:translateY(-25px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
-
-@keyframes float{
-0%{
-transform:translateY(0);
-}
-50%{
-transform:translateY(-8px);
-}
-100%{
-transform:translateY(0);
-}
-}
-
-/* MOBILE */
+/* MOBILE FIX */
 
 @media(max-width:768px){
 
 .container{
-padding:18px;
+padding:16px;
 }
 
 .logo{
 width:95px;
 height:95px;
-font-size:45px;
+font-size:46px;
+border-radius:28px;
 }
 
 .title{
-font-size:50px;
+font-size:48px;
 }
 
 .subtitle{
-font-size:17px;
+font-size:16px;
 }
 
 .search-input{
 height:66px;
-font-size:22px;
+font-size:21px;
+border-radius:22px;
 }
 
-.country-name{
-font-size:26px;
-}
-
-.country-sub{
-font-size:15px;
-}
-
-.price{
-font-size:30px;
+.card{
+padding:18px;
+border-radius:26px;
 }
 
 .flag{
@@ -450,12 +408,29 @@ width:58px;
 height:58px;
 }
 
+.country-name{
+font-size:24px;
+}
+
+.country-sub{
+font-size:15px;
+}
+
+.price{
+font-size:28px;
+}
+
 .notice{
-font-size:17px;
+font-size:16px;
+padding:18px;
 }
 
 .notice-title{
-font-size:23px;
+font-size:22px;
+}
+
+.work-title{
+font-size:18px;
 }
 
 .work-price{
@@ -467,14 +442,81 @@ font-size:24px;
 }
 
 .calc-input{
-font-size:21px;
-height:64px;
+height:62px;
+font-size:20px;
+}
+
+.calc-result{
+font-size:16px;
+padding:18px;
 }
 
 .result-total{
 font-size:34px;
 }
 
+.footer{
+font-size:16px;
+}
+
+}
+
+/* SMALL PHONE FIX */
+
+@media(max-width:430px){
+
+.top{
+align-items:flex-start;
+}
+
+.left{
+gap:12px;
+}
+
+.flag{
+width:52px;
+height:52px;
+}
+
+.country-name{
+font-size:20px;
+}
+
+.country-sub{
+font-size:13px;
+}
+
+.price{
+font-size:22px;
+margin-top:3px;
+}
+
+.title{
+font-size:42px;
+}
+
+.subtitle{
+font-size:15px;
+}
+
+.search-input{
+font-size:19px;
+}
+
+}
+
+/* ANIMATION */
+
+@keyframes float{
+0%{
+transform:translateY(0);
+}
+50%{
+transform:translateY(-8px);
+}
+100%{
+transform:translateY(0);
+}
 }
 
 </style>
@@ -495,13 +537,13 @@ font-size:34px;
 💎
 </div>
 
-<h1 class="title">
+<div class="title">
 AHS SMS Pricing
-</h1>
+</div>
 
-<p class="subtitle">
+<div class="subtitle">
 Premium SMS Working Price Dashboard
-</p>
+</div>
 
 </div>
 
@@ -586,6 +628,10 @@ const countries = [
 const countryList = document.getElementById("countryList");
 const searchInput = document.getElementById("searchInput");
 
+function formatPrice(num){
+return parseFloat(num.toFixed(4)).toString();
+}
+
 function render(data){
 
 countryList.innerHTML = "";
@@ -604,7 +650,7 @@ return;
 
 data.forEach((item,index)=>{
 
-const workingPrice = (item.price - (item.price*0.10)).toFixed(4);
+const workingPrice = item.price - (item.price*0.10);
 
 countryList.innerHTML += `
 
@@ -616,7 +662,7 @@ countryList.innerHTML += `
 
 <img src="${item.flag}" class="flag">
 
-<div>
+<div class="country-info">
 
 <div class="country-name">
 ${item.name}
@@ -631,7 +677,7 @@ Premium SMS Route
 </div>
 
 <div class="price">
-$${item.price}
+$${formatPrice(item.price)}
 </div>
 
 </div>
@@ -646,7 +692,7 @@ $${item.price}
 
 Main Price:
 <span class="green">
-$${item.price}
+$${formatPrice(item.price)}
 </span>
 
 <br><br>
@@ -656,7 +702,7 @@ $${item.price}
 <br><br>
 
 <span class="green">
-$${workingPrice}
+$${formatPrice(workingPrice)}
 </span>
 
 </div>
@@ -668,7 +714,7 @@ $${workingPrice}
 </div>
 
 <div class="work-price">
-$${workingPrice}
+$${formatPrice(workingPrice)}
 </div>
 
 </div>
@@ -734,7 +780,7 @@ return;
 
 }
 
-const total = (qty * price).toFixed(4);
+const total = qty * price;
 
 document.getElementById(resultId).innerHTML = `
 
@@ -745,7 +791,7 @@ document.getElementById(resultId).innerHTML = `
 
 💵 Per SMS Working Price:
 <span class="green">
-$${price}
+$${formatPrice(price)}
 </span>
 
 <br>
@@ -753,7 +799,7 @@ $${price}
 ✅ Final Working Amount:
 
 <div class="result-total">
-$${total}
+$${formatPrice(total)}
 </div>
 
 `;

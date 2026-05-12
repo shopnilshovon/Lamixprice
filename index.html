@@ -3,9 +3,100 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>AHS SMS Pricing</title>
 
-<link rel="stylesheet" href="style.css">
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#050816;
+    font-family:sans-serif;
+    color:white;
+}
+
+.container{
+    max-width:700px;
+    margin:auto;
+    padding:20px;
+}
+
+h1{
+    text-align:center;
+    margin-bottom:25px;
+    font-size:42px;
+    color:#4f8eff;
+    font-weight:bold;
+}
+
+#search{
+    width:100%;
+    padding:18px;
+    border:none;
+    outline:none;
+    border-radius:18px;
+    background:#0f172a;
+    color:white;
+    font-size:18px;
+    margin-bottom:25px;
+}
+
+#search::placeholder{
+    color:#7c8595;
+}
+
+.country{
+    background:#0f172a;
+    padding:20px;
+    border-radius:20px;
+    margin-bottom:15px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    transition:.2s;
+}
+
+.country:hover{
+    transform:translateY(-2px);
+    background:#16213b;
+}
+
+.left{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.flag{
+    font-size:30px;
+}
+
+.name{
+    font-size:22px;
+    font-weight:600;
+}
+
+.price{
+    color:#35d45a;
+    font-size:24px;
+    font-weight:bold;
+}
+
+.notfound{
+    text-align:center;
+    padding:40px;
+    color:#999;
+    font-size:20px;
+}
+
+</style>
 </head>
 <body>
 
@@ -24,8 +115,135 @@
 
 </div>
 
-<script src="prices.js"></script>
-<script src="script.js"></script>
+<script>
+
+const prices = [
+
+{ country:"Afghanistan", flag:"🇦🇫", price:"0.013" },
+{ country:"Algeria", flag:"🇩🇿", price:"0.018" },
+{ country:"Angola", flag:"🇦🇴", price:"0.015" },
+{ country:"Argentina", flag:"🇦🇷", price:"0.013" },
+{ country:"Armenia", flag:"🇦🇲", price:"0.013" },
+{ country:"Azerbaijan", flag:"🇦🇿", price:"0.01" },
+{ country:"Belarus", flag:"🇧🇾", price:"0.01" },
+{ country:"Benin", flag:"🇧🇯", price:"0.013" },
+{ country:"Bhutan", flag:"🇧🇹", price:"0.01" },
+{ country:"Bolivia", flag:"🇧🇴", price:"0.01" },
+{ country:"Bulgaria", flag:"🇧🇬", price:"0.01" },
+{ country:"Cambodia", flag:"🇰🇭", price:"0.023" },
+{ country:"Cameroon", flag:"🇨🇲", price:"0.013" },
+{ country:"Comoros", flag:"🇰🇲", price:"0.023" },
+{ country:"Ecuador", flag:"🇪🇨", price:"0.01" },
+{ country:"Egypt", flag:"🇪🇬", price:"0.01" },
+{ country:"Ethiopia", flag:"🇪🇹", price:"0.013" },
+{ country:"Gabon", flag:"🇬🇦", price:"0.013" },
+{ country:"Georgia", flag:"🇬🇪", price:"0.012" },
+{ country:"Germany", flag:"🇩🇪", price:"0.013" },
+{ country:"Guinea", flag:"🇬🇳", price:"0.01" },
+{ country:"Indonesia", flag:"🇮🇩", price:"0.013" },
+{ country:"Iraq", flag:"🇮🇶", price:"0.013" },
+{ country:"Jordan", flag:"🇯🇴", price:"0.013" },
+{ country:"Kazakhstan", flag:"🇰🇿", price:"0.013" },
+{ country:"Kenya", flag:"🇰🇪", price:"0.013" },
+{ country:"Kosovo", flag:"🇽🇰", price:"0.01" },
+{ country:"Kuwait", flag:"🇰🇼", price:"0.01" },
+{ country:"Kyrgyzstan", flag:"🇰🇬", price:"0.013" },
+{ country:"Lesotho", flag:"🇱🇸", price:"0.013" },
+{ country:"Libya", flag:"🇱🇾", price:"0.013" },
+{ country:"Madagascar", flag:"🇲🇬", price:"0.013" },
+{ country:"Malaysia", flag:"🇲🇾", price:"0.019" },
+{ country:"Mauritania", flag:"🇲🇷", price:"0.013" },
+{ country:"Moldova", flag:"🇲🇩", price:"0.012" },
+{ country:"Mongolia", flag:"🇲🇳", price:"0.01" },
+{ country:"Morocco", flag:"🇲🇦", price:"0.013" },
+{ country:"Mozambique", flag:"🇲🇿", price:"0.01" },
+{ country:"Myanmar", flag:"🇲🇲", price:"0.017" },
+{ country:"Nepal", flag:"🇳🇵", price:"0.01" },
+{ country:"Niger", flag:"🇳🇪", price:"0.013" },
+{ country:"Nigeria", flag:"🇳🇬", price:"0.013" },
+{ country:"Oman", flag:"🇴🇲", price:"0.013" },
+{ country:"Pakistan", flag:"🇵🇰", price:"0.013" },
+{ country:"Palestine", flag:"🇵🇸", price:"0.021" },
+{ country:"Russia", flag:"🇷🇺", price:"0.013" },
+{ country:"Saudi", flag:"🇸🇦", price:"0.01" },
+{ country:"Senegal", flag:"🇸🇳", price:"0.013" },
+{ country:"Slovenia", flag:"🇸🇮", price:"0.012" },
+{ country:"Sri Lanka", flag:"🇱🇰", price:"0.023" },
+{ country:"Sudan", flag:"🇸🇩", price:"0.012" },
+{ country:"Syria", flag:"🇸🇾", price:"0.013" },
+{ country:"Tajikistan", flag:"🇹🇯", price:"0.01" },
+{ country:"Tanzania", flag:"🇹🇿", price:"0.025" },
+{ country:"Tunisia", flag:"🇹🇳", price:"0.018" },
+{ country:"Turkey", flag:"🇹🇷", price:"0.012" },
+{ country:"Turkmenistan", flag:"🇹🇲", price:"0.013" },
+{ country:"UAE", flag:"🇦🇪", price:"0.01" },
+{ country:"Uganda", flag:"🇺🇬", price:"0.012" },
+{ country:"Ukraine", flag:"🇺🇦", price:"0.012" },
+{ country:"Uzbekistan", flag:"🇺🇿", price:"0.013" },
+{ country:"Vietnam", flag:"🇻🇳", price:"0.013" },
+{ country:"Yemen", flag:"🇾🇪", price:"0.013" },
+{ country:"Zambia", flag:"🇿🇲", price:"0.013" },
+{ country:"Zimbabwe", flag:"🇿🇼", price:"0.013" }
+
+];
+
+const list = document.getElementById('list');
+
+function render(data){
+
+    if(data.length === 0){
+
+        list.innerHTML = `
+            <div class="notfound">
+                No country found
+            </div>
+        `;
+
+        return;
+    }
+
+    list.innerHTML = data.map(item => `
+
+        <div class="country">
+
+            <div class="left">
+
+                <div class="flag">
+                    ${item.flag}
+                </div>
+
+                <div class="name">
+                    ${item.country}
+                </div>
+
+            </div>
+
+            <div class="price">
+                $${item.price}
+            </div>
+
+        </div>
+
+    `).join('');
+}
+
+function searchCountry(){
+
+    const q = document
+        .getElementById('search')
+        .value
+        .toLowerCase();
+
+    const filtered = prices.filter(item =>
+        item.country.toLowerCase().includes(q)
+    );
+
+    render(filtered);
+}
+
+render(prices);
+
+</script>
 
 </body>
 </html>

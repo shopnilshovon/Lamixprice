@@ -64,6 +64,6 @@ const prices = [
 { country:"Vietnam", price:"0.013" },
 { country:"Yemen", price:"0.013" },
 { country:"Zambia", price:"0.013" },
-{ country:"Zimbabwe", price:"0.013" }
+{ country:"Zimbabwe", price:"0.014" }
 
 ];

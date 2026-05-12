@@ -3,245 +3,474 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>AHS SMS Pricing</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
 body{
-    background:#050816;
-    font-family:sans-serif;
-    color:white;
+background:#020817;
+font-family:'Poppins',sans-serif;
+color:#fff;
+padding:20px;
 }
 
-.container{
-    max-width:700px;
-    margin:auto;
-    padding:20px;
+.title{
+text-align:center;
+font-size:48px;
+font-weight:800;
+margin-bottom:30px;
+background:linear-gradient(90deg,#4f7cff,#7c5cff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
-h1{
-    text-align:center;
-    margin-bottom:25px;
-    font-size:42px;
-    color:#4f8eff;
-    font-weight:bold;
+.search-box{
+margin-bottom:25px;
 }
 
-#search{
-    width:100%;
-    padding:18px;
-    border:none;
-    outline:none;
-    border-radius:18px;
-    background:#0f172a;
-    color:white;
-    font-size:18px;
-    margin-bottom:25px;
+.search-box input{
+width:100%;
+height:65px;
+border:none;
+outline:none;
+border-radius:22px;
+background:#0b132b;
+padding:0 24px;
+font-size:24px;
+color:#fff;
 }
 
-#search::placeholder{
-    color:#7c8595;
+.search-box input::placeholder{
+color:#7c859f;
 }
 
-.country{
-    background:#0f172a;
-    padding:20px;
-    border-radius:20px;
-    margin-bottom:15px;
-
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-
-    transition:.2s;
+.country-list{
+display:flex;
+flex-direction:column;
+gap:18px;
 }
 
-.country:hover{
-    transform:translateY(-2px);
-    background:#16213b;
+.card{
+background:#111c3d;
+border-radius:24px;
+padding:22px;
+transition:.25s;
+border:2px solid transparent;
+cursor:pointer;
+}
+
+.card:hover{
+border-color:#3b82f6;
+transform:translateY(-2px);
+}
+
+.top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:10px;
 }
 
 .left{
-    display:flex;
-    align-items:center;
-    gap:14px;
+display:flex;
+align-items:center;
+gap:16px;
 }
 
 .flag{
-    font-size:30px;
+width:55px;
+height:55px;
+border-radius:50%;
+object-fit:cover;
+border:2px solid rgba(255,255,255,.1);
 }
 
-.name{
-    font-size:22px;
-    font-weight:600;
+.country{
+font-size:26px;
+font-weight:700;
 }
 
 .price{
-    color:#35d45a;
-    font-size:24px;
-    font-weight:bold;
+font-size:28px;
+font-weight:700;
+color:#22c55e;
 }
 
-.notfound{
-    text-align:center;
-    padding:40px;
-    color:#999;
-    font-size:20px;
+.extra{
+display:none;
+margin-top:20px;
+padding-top:20px;
+border-top:1px solid rgba(255,255,255,.08);
+animation:fade .3s ease;
+}
+
+.extra.show{
+display:block;
+}
+
+@keyframes fade{
+from{
+opacity:0;
+transform:translateY(10px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+.info-box{
+background:#0b132b;
+padding:18px;
+border-radius:18px;
+line-height:1.8;
+font-size:17px;
+color:#dbeafe;
+margin-bottom:18px;
+}
+
+.highlight{
+color:#22c55e;
+font-weight:700;
+}
+
+.warning{
+color:#facc15;
+font-weight:600;
+}
+
+.work-price-box{
+background:linear-gradient(135deg,#1d4ed8,#2563eb);
+padding:18px;
+border-radius:18px;
+margin-bottom:20px;
+}
+
+.work-title{
+font-size:16px;
+opacity:.9;
+margin-bottom:8px;
+}
+
+.work-price{
+font-size:34px;
+font-weight:800;
+}
+
+.calculator{
+background:#0b132b;
+padding:18px;
+border-radius:18px;
+}
+
+.calculator h3{
+font-size:20px;
+margin-bottom:15px;
+}
+
+.calc-input{
+width:100%;
+height:58px;
+border:none;
+outline:none;
+border-radius:14px;
+padding:0 18px;
+font-size:22px;
+background:#111c3d;
+color:#fff;
+margin-bottom:15px;
+}
+
+.calc-result{
+background:#111c3d;
+padding:16px;
+border-radius:14px;
+font-size:18px;
+line-height:1.8;
+}
+
+.result-price{
+color:#22c55e;
+font-size:28px;
+font-weight:800;
+}
+
+.no-result{
+text-align:center;
+padding:50px 20px;
+font-size:24px;
+color:#94a3b8;
+}
+
+@media(max-width:768px){
+
+.title{
+font-size:34px;
+}
+
+.country{
+font-size:21px;
+}
+
+.price{
+font-size:24px;
+}
+
+.flag{
+width:48px;
+height:48px;
+}
+
+.search-box input{
+font-size:20px;
+height:58px;
+}
+
+.work-price{
+font-size:28px;
+}
+
 }
 
 </style>
 </head>
 <body>
 
-<div class="container">
+<h1 class="title">AHS SMS Pricing</h1>
 
-    <h1>AHS SMS Pricing</h1>
-
-    <input
-        type="text"
-        id="search"
-        placeholder="🔍 Search country..."
-        onkeyup="searchCountry()"
-    >
-
-    <div id="list"></div>
-
+<div class="search-box">
+<input type="text" id="searchInput" placeholder="🔍 Search country...">
 </div>
+
+<div class="country-list" id="countryList"></div>
 
 <script>
 
-const prices = [
+const countries = [
 
-{ country:"Afghanistan", flag:"🇦🇫", price:"0.013" },
-{ country:"Algeria", flag:"🇩🇿", price:"0.018" },
-{ country:"Angola", flag:"🇦🇴", price:"0.015" },
-{ country:"Argentina", flag:"🇦🇷", price:"0.013" },
-{ country:"Armenia", flag:"🇦🇲", price:"0.013" },
-{ country:"Azerbaijan", flag:"🇦🇿", price:"0.01" },
-{ country:"Belarus", flag:"🇧🇾", price:"0.01" },
-{ country:"Benin", flag:"🇧🇯", price:"0.013" },
-{ country:"Bhutan", flag:"🇧🇹", price:"0.01" },
-{ country:"Bolivia", flag:"🇧🇴", price:"0.01" },
-{ country:"Bulgaria", flag:"🇧🇬", price:"0.01" },
-{ country:"Cambodia", flag:"🇰🇭", price:"0.023" },
-{ country:"Cameroon", flag:"🇨🇲", price:"0.013" },
-{ country:"Comoros", flag:"🇰🇲", price:"0.023" },
-{ country:"Ecuador", flag:"🇪🇨", price:"0.01" },
-{ country:"Egypt", flag:"🇪🇬", price:"0.01" },
-{ country:"Ethiopia", flag:"🇪🇹", price:"0.013" },
-{ country:"Gabon", flag:"🇬🇦", price:"0.013" },
-{ country:"Georgia", flag:"🇬🇪", price:"0.012" },
-{ country:"Germany", flag:"🇩🇪", price:"0.013" },
-{ country:"Guinea", flag:"🇬🇳", price:"0.01" },
-{ country:"Indonesia", flag:"🇮🇩", price:"0.013" },
-{ country:"Iraq", flag:"🇮🇶", price:"0.013" },
-{ country:"Jordan", flag:"🇯🇴", price:"0.013" },
-{ country:"Kazakhstan", flag:"🇰🇿", price:"0.013" },
-{ country:"Kenya", flag:"🇰🇪", price:"0.013" },
-{ country:"Kosovo", flag:"🇽🇰", price:"0.01" },
-{ country:"Kuwait", flag:"🇰🇼", price:"0.01" },
-{ country:"Kyrgyzstan", flag:"🇰🇬", price:"0.013" },
-{ country:"Lesotho", flag:"🇱🇸", price:"0.013" },
-{ country:"Libya", flag:"🇱🇾", price:"0.013" },
-{ country:"Madagascar", flag:"🇲🇬", price:"0.013" },
-{ country:"Malaysia", flag:"🇲🇾", price:"0.019" },
-{ country:"Mauritania", flag:"🇲🇷", price:"0.013" },
-{ country:"Moldova", flag:"🇲🇩", price:"0.012" },
-{ country:"Mongolia", flag:"🇲🇳", price:"0.01" },
-{ country:"Morocco", flag:"🇲🇦", price:"0.013" },
-{ country:"Mozambique", flag:"🇲🇿", price:"0.01" },
-{ country:"Myanmar", flag:"🇲🇲", price:"0.017" },
-{ country:"Nepal", flag:"🇳🇵", price:"0.01" },
-{ country:"Niger", flag:"🇳🇪", price:"0.013" },
-{ country:"Nigeria", flag:"🇳🇬", price:"0.013" },
-{ country:"Oman", flag:"🇴🇲", price:"0.013" },
-{ country:"Pakistan", flag:"🇵🇰", price:"0.013" },
-{ country:"Palestine", flag:"🇵🇸", price:"0.021" },
-{ country:"Russia", flag:"🇷🇺", price:"0.013" },
-{ country:"Saudi", flag:"🇸🇦", price:"0.01" },
-{ country:"Senegal", flag:"🇸🇳", price:"0.013" },
-{ country:"Slovenia", flag:"🇸🇮", price:"0.012" },
-{ country:"Sri Lanka", flag:"🇱🇰", price:"0.023" },
-{ country:"Sudan", flag:"🇸🇩", price:"0.012" },
-{ country:"Syria", flag:"🇸🇾", price:"0.013" },
-{ country:"Tajikistan", flag:"🇹🇯", price:"0.01" },
-{ country:"Tanzania", flag:"🇹🇿", price:"0.025" },
-{ country:"Tunisia", flag:"🇹🇳", price:"0.018" },
-{ country:"Turkey", flag:"🇹🇷", price:"0.012" },
-{ country:"Turkmenistan", flag:"🇹🇲", price:"0.013" },
-{ country:"UAE", flag:"🇦🇪", price:"0.01" },
-{ country:"Uganda", flag:"🇺🇬", price:"0.012" },
-{ country:"Ukraine", flag:"🇺🇦", price:"0.012" },
-{ country:"Uzbekistan", flag:"🇺🇿", price:"0.013" },
-{ country:"Vietnam", flag:"🇻🇳", price:"0.013" },
-{ country:"Yemen", flag:"🇾🇪", price:"0.013" },
-{ country:"Zambia", flag:"🇿🇲", price:"0.013" },
-{ country:"Zimbabwe", flag:"🇿🇼", price:"0.013" }
+{
+name:"Tanzania",
+price:0.025,
+flag:"https://flagcdn.com/w320/tz.png"
+},
+
+{
+name:"Afghanistan",
+price:0.013,
+flag:"https://flagcdn.com/w320/af.png"
+},
+
+{
+name:"Algeria",
+price:0.018,
+flag:"https://flagcdn.com/w320/dz.png"
+},
+
+{
+name:"Angola",
+price:0.015,
+flag:"https://flagcdn.com/w320/ao.png"
+},
+
+{
+name:"Germany",
+price:0.013,
+flag:"https://flagcdn.com/w320/de.png"
+},
+
+{
+name:"Malaysia",
+price:0.019,
+flag:"https://flagcdn.com/w320/my.png"
+},
+
+{
+name:"Pakistan",
+price:0.013,
+flag:"https://flagcdn.com/w320/pk.png"
+},
+
+{
+name:"Sri Lanka",
+price:0.023,
+flag:"https://flagcdn.com/w320/lk.png"
+},
+
+{
+name:"Turkey",
+price:0.012,
+flag:"https://flagcdn.com/w320/tr.png"
+},
+
+{
+name:"Vietnam",
+price:0.013,
+flag:"https://flagcdn.com/w320/vn.png"
+}
 
 ];
 
-const list = document.getElementById('list');
+const list = document.getElementById("countryList");
+const searchInput = document.getElementById("searchInput");
 
 function render(data){
 
-    if(data.length === 0){
+list.innerHTML = "";
 
-        list.innerHTML = `
-            <div class="notfound">
-                No country found
-            </div>
-        `;
-
-        return;
-    }
-
-    list.innerHTML = data.map(item => `
-
-        <div class="country">
-
-            <div class="left">
-
-                <div class="flag">
-                    ${item.flag}
-                </div>
-
-                <div class="name">
-                    ${item.country}
-                </div>
-
-            </div>
-
-            <div class="price">
-                $${item.price}
-            </div>
-
-        </div>
-
-    `).join('');
+if(data.length === 0){
+list.innerHTML = `<div class="no-result">No Country Found</div>`;
+return;
 }
 
-function searchCountry(){
+data.forEach((item,index)=>{
 
-    const q = document
-        .getElementById('search')
-        .value
-        .toLowerCase();
+const workingPrice = (item.price - (item.price * 0.10)).toFixed(4);
 
-    const filtered = prices.filter(item =>
-        item.country.toLowerCase().includes(q)
-    );
+list.innerHTML += `
 
-    render(filtered);
+<div class="card">
+
+<div class="top" onclick="toggleBox(${index})">
+
+<div class="left">
+<img src="${item.flag}" class="flag">
+<div class="country">${item.name}</div>
+</div>
+
+<div class="price">
+$${item.price}
+</div>
+
+</div>
+
+<div class="extra" id="box${index}">
+
+<div class="info-box">
+
+<div class="warning">
+⚠️ 10% Service Charge Applied
+</div>
+
+<br>
+
+Main Price:
+<span class="highlight">$${item.price}</span>
+
+<br>
+
+10% Service Charge কেটে নেওয়ার পর আপনাদের কাজের মূল দাম (Working Price) হবে:
+
+<span class="highlight">$${workingPrice}</span>
+
+</div>
+
+<div class="work-price-box">
+
+<div class="work-title">
+💰 Final Working Price
+</div>
+
+<div class="work-price">
+$${workingPrice}
+</div>
+
+</div>
+
+<div class="calculator">
+
+<h3>📱 SMS Calculator</h3>
+
+<input 
+type="number" 
+class="calc-input" 
+placeholder="Example: 100 SMS"
+oninput="calculateSMS(this, ${workingPrice}, 'result${index}')"
+>
+
+<div class="calc-result" id="result${index}">
+
+📊 SMS Quantity অনুযায়ী total earning এখানে show হবে।
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+});
+
 }
 
-render(prices);
+function toggleBox(id){
+
+const box = document.getElementById("box"+id);
+
+if(box.classList.contains("show")){
+box.classList.remove("show");
+}else{
+box.classList.add("show");
+}
+
+}
+
+function calculateSMS(input, price, resultId){
+
+const qty = parseInt(input.value);
+
+if(!qty || qty <= 0){
+document.getElementById(resultId).innerHTML = `
+📊 SMS Quantity অনুযায়ী total earning এখানে show হবে।
+`;
+return;
+}
+
+const total = (qty * price).toFixed(4);
+
+document.getElementById(resultId).innerHTML = `
+
+📨 Total SMS: <b>${qty}</b>
+
+<br><br>
+
+💵 Per SMS Working Price: <span class="highlight">$${price}</span>
+
+<br><br>
+
+✅ Total Working Amount:
+
+<div class="result-price">
+$${total}
+</div>
+
+`;
+
+}
+
+searchInput.addEventListener("input", ()=>{
+
+const value = searchInput.value.toLowerCase();
+
+const filtered = countries.filter(item =>
+item.name.toLowerCase().includes(value)
+);
+
+render(filtered);
+
+});
+
+render(countries);
 
 </script>
 

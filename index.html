@@ -6,7 +6,7 @@
 
 <title>AHS SMS Pricing</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 
@@ -15,6 +15,10 @@ margin:0;
 padding:0;
 box-sizing:border-box;
 font-family:'Poppins',sans-serif;
+}
+
+html{
+scroll-behavior:smooth;
 }
 
 body{
@@ -30,6 +34,8 @@ min-height:100vh;
 position:fixed;
 inset:0;
 z-index:-1;
+overflow:hidden;
+
 background:
 linear-gradient(
 180deg,
@@ -38,33 +44,42 @@ linear-gradient(
 #0b1025 70%,
 #14061f 100%
 );
-overflow:hidden;
 }
 
 .bg::before{
 content:"";
 position:absolute;
-top:-200px;
-left:-200px;
+top:-250px;
+left:-250px;
 width:700px;
 height:700px;
-background:radial-gradient(circle,
+
+background:
+radial-gradient(circle,
 rgba(37,99,235,.35),
 transparent 70%);
+
 filter:blur(80px);
+
+animation:move1 12s infinite alternate ease-in-out;
 }
 
 .bg::after{
 content:"";
 position:absolute;
 bottom:-250px;
-right:-200px;
+right:-250px;
 width:700px;
 height:700px;
-background:radial-gradient(circle,
+
+background:
+radial-gradient(circle,
 rgba(168,85,247,.30),
 transparent 70%);
+
 filter:blur(80px);
+
+animation:move2 14s infinite alternate ease-in-out;
 }
 
 .blur{
@@ -74,16 +89,70 @@ left:50%;
 transform:translate(-50%,-50%);
 width:500px;
 height:500px;
-background:radial-gradient(circle,
+
+background:
+radial-gradient(circle,
 rgba(0,183,255,.10),
 transparent 70%);
+
 filter:blur(70px);
+}
+
+.grid{
+position:absolute;
+inset:0;
+
+background-image:
+linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px);
+
+background-size:40px 40px;
+mask-image:linear-gradient(to bottom,rgba(0,0,0,.7),transparent);
+}
+
+/* ANIMATION */
+
+@keyframes float{
+50%{
+transform:translateY(-10px);
+}
+}
+
+@keyframes move1{
+100%{
+transform:translate(60px,50px);
+}
+}
+
+@keyframes move2{
+100%{
+transform:translate(-70px,-40px);
+}
+}
+
+@keyframes fade{
+from{
+opacity:0;
+transform:translateY(12px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@keyframes glow{
+50%{
+box-shadow:
+0 0 30px rgba(59,130,246,.5),
+0 0 70px rgba(168,85,247,.3);
+}
 }
 
 /* CONTAINER */
 
 .container{
-max-width:850px;
+max-width:900px;
 margin:auto;
 padding:20px;
 }
@@ -92,41 +161,61 @@ padding:20px;
 
 .header{
 text-align:center;
-padding:30px 10px;
+padding:35px 10px;
 }
 
 .logo{
-width:95px;
-height:95px;
+width:100px;
+height:100px;
 margin:auto;
-border-radius:28px;
-background:linear-gradient(135deg,#2563eb,#9333ea);
+
+border-radius:30px;
+
 display:flex;
 align-items:center;
 justify-content:center;
-font-size:48px;
-box-shadow:
-0 0 40px rgba(59,130,246,.4),
-0 0 80px rgba(168,85,247,.3);
-animation:float 4s ease-in-out infinite;
-margin-bottom:22px;
-}
 
-@keyframes float{
-50%{
-transform:translateY(-10px);
-}
+font-size:50px;
+
+background:
+linear-gradient(
+135deg,
+#2563eb,
+#7c3aed,
+#9333ea
+);
+
+box-shadow:
+0 0 35px rgba(59,130,246,.35),
+0 0 80px rgba(168,85,247,.25);
+
+margin-bottom:24px;
+
+animation:
+float 4s ease-in-out infinite,
+glow 4s infinite ease-in-out;
 }
 
 .title{
-font-size:58px;
-font-weight:800;
-line-height:1.1;
-background:linear-gradient(to right,#60a5fa,#93c5fd,#e879f9);
+font-size:64px;
+font-weight:900;
+line-height:1.05;
+
+background:
+linear-gradient(
+to right,
+#60a5fa,
+#93c5fd,
+#c084fc,
+#f0abfc
+);
+
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
-margin-bottom:12px;
-text-shadow:0 0 30px rgba(96,165,250,.15);
+
+margin-bottom:15px;
+
+letter-spacing:-2px;
 }
 
 .subtitle{
@@ -134,30 +223,111 @@ font-size:22px;
 color:#cbd5e1;
 }
 
+.line{
+width:140px;
+height:4px;
+
+margin:28px auto 0;
+
+border-radius:20px;
+
+background:
+linear-gradient(
+to right,
+transparent,
+#60a5fa,
+#c084fc,
+transparent
+);
+
+box-shadow:
+0 0 20px rgba(96,165,250,.35);
+}
+
+/* STATS */
+
+.stats{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px;
+margin:30px 0;
+}
+
+.stat{
+
+background:
+linear-gradient(
+135deg,
+rgba(15,23,60,.95),
+rgba(8,13,40,.95)
+);
+
+border:1px solid rgba(255,255,255,.05);
+
+padding:22px;
+
+border-radius:22px;
+
+text-align:center;
+
+backdrop-filter:blur(18px);
+
+box-shadow:
+0 0 25px rgba(0,0,0,.25);
+}
+
+.stat h2{
+font-size:34px;
+color:#22c55e;
+margin-bottom:8px;
+}
+
+.stat p{
+font-size:14px;
+color:#cbd5e1;
+}
+
 /* SEARCH */
 
 .searchBox{
-margin:35px 0;
+margin:30px 0 20px;
+position:sticky;
+top:10px;
+z-index:100;
+}
+
+.searchWrap{
 position:relative;
 }
 
 .searchInput{
 width:100%;
-height:75px;
+height:68px;
 border:none;
 outline:none;
-padding:0 25px 0 70px;
-border-radius:24px;
-font-size:22px;
-background:rgba(8,15,35,.88);
-color:white;
-border:1px solid rgba(255,255,255,.06);
+
+padding:0 20px 0 60px;
+
+border-radius:22px;
+
+font-size:18px;
+font-weight:600;
+
+background:
+rgba(8,15,35,.88);
+
 backdrop-filter:blur(20px);
+
+color:white;
+
+border:1px solid rgba(255,255,255,.05);
+
 transition:.3s;
 }
 
 .searchInput:focus{
 border-color:#3b82f6;
+
 box-shadow:
 0 0 25px rgba(59,130,246,.25);
 }
@@ -168,16 +338,17 @@ color:#94a3b8;
 
 .searchIcon{
 position:absolute;
-left:24px;
+left:20px;
 top:50%;
 transform:translateY(-50%);
-font-size:26px;
+font-size:20px;
 color:#94a3b8;
 }
 
 /* CARD */
 
 .card{
+
 background:
 linear-gradient(
 135deg,
@@ -187,24 +358,31 @@ rgba(6,10,28,.96)
 
 border:1px solid rgba(255,255,255,.05);
 
-border-radius:26px;
-padding:18px;
-margin-bottom:16px;
+border-radius:24px;
+
+padding:16px;
+
+margin-bottom:14px;
 
 transition:.3s;
+
 cursor:pointer;
 
 backdrop-filter:blur(20px);
 
 box-shadow:
-0 0 30px rgba(0,0,0,.35);
+0 0 25px rgba(0,0,0,.3);
+
+animation:fade .4s ease;
 }
 
 .card:hover{
-transform:translateY(-3px);
+transform:translateY(-4px);
+
 border-color:#2563eb;
+
 box-shadow:
-0 0 25px rgba(37,99,235,.25);
+0 0 35px rgba(37,99,235,.25);
 }
 
 .top{
@@ -217,38 +395,38 @@ gap:15px;
 .left{
 display:flex;
 align-items:center;
-gap:15px;
+gap:14px;
 min-width:0;
 }
 
 .flag{
-width:58px;
-height:58px;
+width:54px;
+height:54px;
 border-radius:50%;
 object-fit:cover;
 flex-shrink:0;
-box-shadow:0 0 20px rgba(255,255,255,.10);
+
+box-shadow:
+0 0 20px rgba(255,255,255,.08);
 }
 
 .country{
-font-size:26px;
+font-size:20px;
 font-weight:700;
 line-height:1.1;
-word-break:break-word;
 }
 
 .route{
-font-size:14px;
+font-size:12px;
 color:#94a3b8;
 margin-top:4px;
 }
 
 .price{
-font-size:34px;
+font-size:24px;
 font-weight:800;
 color:#22c55e;
 text-shadow:0 0 15px rgba(34,197,94,.4);
-flex-shrink:0;
 }
 
 /* DETAILS */
@@ -256,84 +434,196 @@ flex-shrink:0;
 .details{
 display:none;
 margin-top:18px;
-animation:fade .35s ease;
 }
 
 .card.active .details{
 display:block;
-}
-
-@keyframes fade{
-from{
-opacity:0;
-transform:translateY(10px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
+animation:fade .35s ease;
 }
 
 .calc{
-background:rgba(255,255,255,.03);
-border-radius:22px;
-padding:20px;
+
+background:
+rgba(255,255,255,.03);
+
+border-radius:20px;
+
+padding:18px;
+
 border:1px solid rgba(255,255,255,.04);
 }
 
 .calc h3{
-font-size:24px;
+font-size:20px;
 margin-bottom:15px;
 }
 
 .smsInput{
 width:100%;
-height:60px;
+height:58px;
+
 border:none;
 outline:none;
+
 border-radius:18px;
+
 padding:0 18px;
-font-size:20px;
+
+font-size:18px;
+
 background:#081126;
 color:white;
-border:1px solid rgba(59,130,246,.3);
+
+border:1px solid rgba(59,130,246,.25);
+
 margin-bottom:18px;
 }
 
 .result{
 background:#081126;
+
 border-radius:18px;
+
 padding:18px;
-font-size:17px;
+
+font-size:15px;
+
 line-height:2;
 }
 
 .final{
-font-size:38px;
+font-size:36px;
 font-weight:800;
 color:#22c55e;
-margin-top:10px;
+margin-top:8px;
 }
 
 /* NOT FOUND */
 
 .notfound{
 text-align:center;
+
 padding:40px 20px;
-background:rgba(255,255,255,.03);
-border-radius:25px;
+
+background:
+rgba(255,255,255,.03);
+
+border-radius:24px;
+
 border:1px solid rgba(255,255,255,.04);
 }
 
 .notfound h2{
-font-size:28px;
+font-size:24px;
 margin-bottom:10px;
 color:#f87171;
 }
 
 .notfound p{
-font-size:16px;
+font-size:15px;
 color:#cbd5e1;
+}
+
+/* LEADERBOARD */
+
+.leaderboard{
+margin-top:40px;
+}
+
+.sectionTitle{
+font-size:26px;
+font-weight:800;
+margin-bottom:18px;
+}
+
+.lbCard{
+
+display:flex;
+align-items:center;
+justify-content:space-between;
+
+padding:18px;
+
+margin-bottom:12px;
+
+border-radius:22px;
+
+background:
+linear-gradient(
+135deg,
+rgba(15,23,60,.95),
+rgba(8,13,40,.95)
+);
+
+border:1px solid rgba(255,255,255,.05);
+
+backdrop-filter:blur(18px);
+}
+
+.lbLeft{
+display:flex;
+align-items:center;
+gap:14px;
+}
+
+.rank{
+font-size:24px;
+font-weight:800;
+color:#facc15;
+}
+
+.lbFlag{
+width:46px;
+height:46px;
+border-radius:50%;
+}
+
+.lbName{
+font-size:18px;
+font-weight:700;
+}
+
+.lbPrice{
+font-size:20px;
+font-weight:800;
+color:#22c55e;
+}
+
+/* TELEGRAM */
+
+.telegram{
+
+position:fixed;
+
+right:18px;
+bottom:18px;
+
+width:65px;
+height:65px;
+
+border-radius:50%;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+font-size:32px;
+
+text-decoration:none;
+
+background:
+linear-gradient(
+135deg,
+#229ED9,
+#2563eb
+);
+
+box-shadow:
+0 0 25px rgba(37,99,235,.45);
+
+z-index:999;
+
+animation:float 3s infinite ease-in-out;
 }
 
 /* FOOTER */
@@ -341,7 +631,7 @@ color:#cbd5e1;
 .footer{
 text-align:center;
 padding:45px 0 25px;
-font-size:18px;
+font-size:16px;
 color:#cbd5e1;
 }
 
@@ -355,7 +645,11 @@ font-weight:700;
 @media(max-width:768px){
 
 .container{
-padding:15px;
+padding:14px;
+}
+
+.stats{
+grid-template-columns:1fr;
 }
 
 .logo{
@@ -369,29 +663,27 @@ font-size:34px;
 }
 
 .subtitle{
-font-size:15px;
+font-size:14px;
+}
+
+.line{
+width:90px;
 }
 
 .searchInput{
-height:65px;
-font-size:18px;
-padding-left:60px;
-}
-
-.searchIcon{
-font-size:22px;
-left:20px;
+height:58px;
+font-size:16px;
+padding-left:54px;
 }
 
 .card{
-padding:14px;
-border-radius:20px;
-margin-bottom:12px;
+padding:13px;
+border-radius:18px;
 }
 
 .flag{
-width:48px;
-height:48px;
+width:46px;
+height:46px;
 }
 
 .country{
@@ -403,28 +695,25 @@ font-size:11px;
 }
 
 .price{
-font-size:18px;
-}
-
-.calc h3{
-font-size:18px;
-}
-
-.smsInput{
-height:52px;
-font-size:17px;
-}
-
-.result{
-font-size:14px;
+font-size:19px;
 }
 
 .final{
 font-size:28px;
 }
 
-.footer{
+.lbName{
 font-size:15px;
+}
+
+.lbPrice{
+font-size:16px;
+}
+
+.telegram{
+width:58px;
+height:58px;
+font-size:28px;
 }
 
 }
@@ -436,18 +725,55 @@ font-size:15px;
 
 <div class="bg">
 <div class="blur"></div>
+<div class="grid"></div>
 </div>
 
 <div class="container">
 
 <div class="header">
-<div class="logo">💎</div>
-<div class="title">AHS SMS Pricing</div>
-<div class="subtitle">Premium SMS Earnings Dashboard</div>
+
+<div class="logo">
+💎
+</div>
+
+<div class="title">
+AHS SMS Pricing
+</div>
+
+<div class="subtitle">
+Premium SMS Earnings Dashboard
+</div>
+
+<div class="line"></div>
+
+</div>
+
+<div class="stats">
+
+<div class="stat">
+<h2 id="countryCount">0</h2>
+<p>Total Countries</p>
+</div>
+
+<div class="stat">
+<h2>$0.0200</h2>
+<p>Highest Price</p>
+</div>
+
+<div class="stat">
+<h2 id="routeCount">0</h2>
+<p>Premium Routes</p>
+</div>
+
 </div>
 
 <div class="searchBox">
-<div class="searchIcon">🔍</div>
+
+<div class="searchWrap">
+
+<div class="searchIcon">
+🔍
+</div>
 
 <input
 type="text"
@@ -458,7 +784,19 @@ id="search"
 
 </div>
 
+</div>
+
 <div id="list"></div>
+
+<div class="leaderboard">
+
+<div class="sectionTitle">
+🏆 Top Paying Countries
+</div>
+
+<div id="leaderboard"></div>
+
+</div>
 
 <div class="footer">
 Powered By <span>AHS SHOVON</span>
@@ -466,38 +804,46 @@ Powered By <span>AHS SHOVON</span>
 
 </div>
 
+<a
+href="https://t.me/AHS_Network"
+target="_blank"
+class="telegram"
+>
+📩
+</a>
+
 <script>
 
 const countries = [
 
 {name:"Afghanistan",price:0.0104,flag:"https://flagcdn.com/w320/af.png"},
 {name:"Algeria",price:0.0144,flag:"https://flagcdn.com/w320/dz.png"},
-{name:"Angola",price:0.012,flag:"https://flagcdn.com/w320/ao.png"},
+{name:"Angola",price:0.0120,flag:"https://flagcdn.com/w320/ao.png"},
 {name:"Argentina",price:0.0104,flag:"https://flagcdn.com/w320/ar.png"},
 {name:"Armenia",price:0.0104,flag:"https://flagcdn.com/w320/am.png"},
-{name:"Azerbaijan",price:0.008,flag:"https://flagcdn.com/w320/az.png"},
-{name:"Belarus",price:0.008,flag:"https://flagcdn.com/w320/by.png"},
+{name:"Azerbaijan",price:0.0080,flag:"https://flagcdn.com/w320/az.png"},
+{name:"Belarus",price:0.0080,flag:"https://flagcdn.com/w320/by.png"},
 {name:"Benin",price:0.0104,flag:"https://flagcdn.com/w320/bj.png"},
-{name:"Bhutan",price:0.008,flag:"https://flagcdn.com/w320/bt.png"},
-{name:"Bolivia",price:0.008,flag:"https://flagcdn.com/w320/bo.png"},
-{name:"Bulgaria",price:0.008,flag:"https://flagcdn.com/w320/bg.png"},
+{name:"Bhutan",price:0.0080,flag:"https://flagcdn.com/w320/bt.png"},
+{name:"Bolivia",price:0.0080,flag:"https://flagcdn.com/w320/bo.png"},
+{name:"Bulgaria",price:0.0080,flag:"https://flagcdn.com/w320/bg.png"},
 {name:"Cambodia",price:0.0184,flag:"https://flagcdn.com/w320/kh.png"},
 {name:"Cameroon",price:0.0104,flag:"https://flagcdn.com/w320/cm.png"},
 {name:"Comoros",price:0.0184,flag:"https://flagcdn.com/w320/km.png"},
-{name:"Ecuador",price:0.008,flag:"https://flagcdn.com/w320/ec.png"},
-{name:"Egypt",price:0.008,flag:"https://flagcdn.com/w320/eg.png"},
+{name:"Ecuador",price:0.0080,flag:"https://flagcdn.com/w320/ec.png"},
+{name:"Egypt",price:0.0080,flag:"https://flagcdn.com/w320/eg.png"},
 {name:"Ethiopia",price:0.0104,flag:"https://flagcdn.com/w320/et.png"},
 {name:"Gabon",price:0.0104,flag:"https://flagcdn.com/w320/ga.png"},
 {name:"Georgia",price:0.0096,flag:"https://flagcdn.com/w320/ge.png"},
 {name:"Germany",price:0.0104,flag:"https://flagcdn.com/w320/de.png"},
-{name:"Guinea",price:0.008,flag:"https://flagcdn.com/w320/gn.png"},
+{name:"Guinea",price:0.0080,flag:"https://flagcdn.com/w320/gn.png"},
 {name:"Indonesia",price:0.0104,flag:"https://flagcdn.com/w320/id.png"},
 {name:"Iraq",price:0.0104,flag:"https://flagcdn.com/w320/iq.png"},
 {name:"Jordan",price:0.0104,flag:"https://flagcdn.com/w320/jo.png"},
 {name:"Kazakhstan",price:0.0104,flag:"https://flagcdn.com/w320/kz.png"},
 {name:"Kenya",price:0.0104,flag:"https://flagcdn.com/w320/ke.png"},
-{name:"Kosovo",price:0.008,flag:"https://flagcdn.com/w320/xk.png"},
-{name:"Kuwait",price:0.008,flag:"https://flagcdn.com/w320/kw.png"},
+{name:"Kosovo",price:0.0080,flag:"https://flagcdn.com/w320/xk.png"},
+{name:"Kuwait",price:0.0080,flag:"https://flagcdn.com/w320/kw.png"},
 {name:"Kyrgyzstan",price:0.0104,flag:"https://flagcdn.com/w320/kg.png"},
 {name:"Lesotho",price:0.0104,flag:"https://flagcdn.com/w320/ls.png"},
 {name:"Libya",price:0.0104,flag:"https://flagcdn.com/w320/ly.png"},
@@ -505,29 +851,29 @@ const countries = [
 {name:"Malaysia",price:0.0152,flag:"https://flagcdn.com/w320/my.png"},
 {name:"Mauritania",price:0.0104,flag:"https://flagcdn.com/w320/mr.png"},
 {name:"Moldova",price:0.0096,flag:"https://flagcdn.com/w320/md.png"},
-{name:"Mongolia",price:0.008,flag:"https://flagcdn.com/w320/mn.png"},
+{name:"Mongolia",price:0.0080,flag:"https://flagcdn.com/w320/mn.png"},
 {name:"Morocco",price:0.0104,flag:"https://flagcdn.com/w320/ma.png"},
-{name:"Mozambique",price:0.008,flag:"https://flagcdn.com/w320/mz.png"},
+{name:"Mozambique",price:0.0080,flag:"https://flagcdn.com/w320/mz.png"},
 {name:"Myanmar",price:0.0136,flag:"https://flagcdn.com/w320/mm.png"},
-{name:"Nepal",price:0.008,flag:"https://flagcdn.com/w320/np.png"},
+{name:"Nepal",price:0.0080,flag:"https://flagcdn.com/w320/np.png"},
 {name:"Niger",price:0.0104,flag:"https://flagcdn.com/w320/ne.png"},
 {name:"Nigeria",price:0.0104,flag:"https://flagcdn.com/w320/ng.png"},
 {name:"Oman",price:0.0104,flag:"https://flagcdn.com/w320/om.png"},
 {name:"Pakistan",price:0.0104,flag:"https://flagcdn.com/w320/pk.png"},
 {name:"Palestine",price:0.0168,flag:"https://flagcdn.com/w320/ps.png"},
 {name:"Russia",price:0.0104,flag:"https://flagcdn.com/w320/ru.png"},
-{name:"Saudi Arabia",price:0.008,flag:"https://flagcdn.com/w320/sa.png"},
+{name:"Saudi Arabia",price:0.0080,flag:"https://flagcdn.com/w320/sa.png"},
 {name:"Senegal",price:0.0104,flag:"https://flagcdn.com/w320/sn.png"},
 {name:"Slovenia",price:0.0096,flag:"https://flagcdn.com/w320/si.png"},
 {name:"Sri Lanka",price:0.0184,flag:"https://flagcdn.com/w320/lk.png"},
 {name:"Sudan",price:0.0096,flag:"https://flagcdn.com/w320/sd.png"},
 {name:"Syria",price:0.0104,flag:"https://flagcdn.com/w320/sy.png"},
-{name:"Tajikistan",price:0.008,flag:"https://flagcdn.com/w320/tj.png"},
-{name:"Tanzania",price:0.02,flag:"https://flagcdn.com/w320/tz.png"},
+{name:"Tajikistan",price:0.0080,flag:"https://flagcdn.com/w320/tj.png"},
+{name:"Tanzania",price:0.0200,flag:"https://flagcdn.com/w320/tz.png"},
 {name:"Tunisia",price:0.0144,flag:"https://flagcdn.com/w320/tn.png"},
 {name:"Turkey",price:0.0096,flag:"https://flagcdn.com/w320/tr.png"},
 {name:"Turkmenistan",price:0.0104,flag:"https://flagcdn.com/w320/tm.png"},
-{name:"UAE",price:0.008,flag:"https://flagcdn.com/w320/ae.png"},
+{name:"UAE",price:0.0080,flag:"https://flagcdn.com/w320/ae.png"},
 {name:"Uganda",price:0.0096,flag:"https://flagcdn.com/w320/ug.png"},
 {name:"Ukraine",price:0.0096,flag:"https://flagcdn.com/w320/ua.png"},
 {name:"Uzbekistan",price:0.0104,flag:"https://flagcdn.com/w320/uz.png"},
@@ -538,21 +884,35 @@ const countries = [
 
 ];
 
-const list = document.getElementById("list");
+const list=document.getElementById("list");
+
+/* COUNTER */
+
+document.getElementById("countryCount").innerHTML=countries.length;
+document.getElementById("routeCount").innerHTML=countries.length;
+
+/* RENDER */
 
 function render(data){
 
-list.innerHTML = "";
+list.innerHTML="";
 
-if(data.length === 0){
+if(data.length===0){
 
-list.innerHTML = `
+list.innerHTML=`
+
 <div class="notfound">
-<h2>❌ Country Not Available</h2>
+
+<h2>
+❌ Country Not Available
+</h2>
+
 <p>
-Sorry, this country is currently unavailable in our SMS route list.
+Sorry, this country is currently unavailable.
 </p>
+
 </div>
+
 `;
 
 return;
@@ -560,11 +920,11 @@ return;
 
 data.forEach(c=>{
 
-const card = document.createElement("div");
+const card=document.createElement("div");
 
-card.className = "card";
+card.className="card";
 
-card.innerHTML = `
+card.innerHTML=`
 
 <div class="top">
 
@@ -573,13 +933,22 @@ card.innerHTML = `
 <img class="flag" src="${c.flag}">
 
 <div>
-<div class="country">${c.name}</div>
-<div class="route">Premium SMS Route</div>
+
+<div class="country">
+${c.name}
+</div>
+
+<div class="route">
+Premium SMS Route
 </div>
 
 </div>
 
-<div class="price">$${c.price}</div>
+</div>
+
+<div class="price">
+$${c.price}
+</div>
 
 </div>
 
@@ -587,7 +956,9 @@ card.innerHTML = `
 
 <div class="calc">
 
-<h3>🧮 SMS Earnings Calculator</h3>
+<h3>
+🧮 SMS Earnings Calculator
+</h3>
 
 <input
 type="number"
@@ -612,7 +983,9 @@ $${c.price}
 
 ✅ Total Earnings:
 
-<div class="final">$0</div>
+<div class="final">
+$0
+</div>
 
 </div>
 
@@ -622,7 +995,7 @@ $${c.price}
 
 `;
 
-card.onclick = function(e){
+card.onclick=function(e){
 
 if(e.target.classList.contains("smsInput"))
 return;
@@ -645,30 +1018,70 @@ list.appendChild(card);
 
 function calculate(input,price){
 
-const qty = Number(input.value || 0);
+const qty=Number(input.value||0);
 
-const result = qty * price;
+const result=qty*price;
 
-const box = input.parentElement.querySelector(".result");
+const box=input.parentElement.querySelector(".result");
 
-box.querySelector(".smsCount").innerText = qty;
+box.querySelector(".smsCount").innerText=qty;
 
-box.querySelector(".final").innerText =
-"$" + Number(result.toFixed(4));
+box.querySelector(".final").innerText=
+"$"+Number(result.toFixed(4));
 
 }
+
+/* SEARCH */
 
 render(countries);
 
 document.getElementById("search").addEventListener("input",e=>{
 
-const value = e.target.value.toLowerCase();
+const value=e.target.value.toLowerCase();
 
-const filtered = countries.filter(c=>
+const filtered=countries.filter(c=>
 c.name.toLowerCase().includes(value)
 );
 
 render(filtered);
+
+});
+
+/* LEADERBOARD */
+
+const leaderboard=document.getElementById("leaderboard");
+
+const sorted=[...countries]
+.sort((a,b)=>b.price-a.price)
+.slice(0,10);
+
+sorted.forEach((c,index)=>{
+
+leaderboard.innerHTML+=`
+
+<div class="lbCard">
+
+<div class="lbLeft">
+
+<div class="rank">
+#${index+1}
+</div>
+
+<img class="lbFlag" src="${c.flag}">
+
+<div class="lbName">
+${c.name}
+</div>
+
+</div>
+
+<div class="lbPrice">
+$${c.price}
+</div>
+
+</div>
+
+`;
 
 });
 

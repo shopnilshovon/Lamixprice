@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>AHS SMS Pricing</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -17,115 +18,69 @@ font-family:'Poppins',sans-serif;
 }
 
 body{
-background:#050816;
+background:#020617;
 color:white;
 overflow-x:hidden;
 min-height:100vh;
 }
 
-/* =========================
-BACKGROUND
-========================= */
+/* BACKGROUND */
 
 .bg{
 position:fixed;
 inset:0;
 z-index:-1;
-overflow:hidden;
-
 background:
 linear-gradient(
 180deg,
-#081338 0%,
-#040b25 30%,
-#070019 65%,
-#130028 100%
+#020617 0%,
+#050b1f 35%,
+#0b1025 70%,
+#14061f 100%
 );
+overflow:hidden;
 }
 
 .bg::before{
 content:"";
 position:absolute;
-top:-250px;
-left:-180px;
+top:-200px;
+left:-200px;
 width:700px;
 height:700px;
-
-background:
-radial-gradient(circle,
-rgba(37,99,235,.55) 0%,
-rgba(37,99,235,.2) 40%,
+background:radial-gradient(circle,
+rgba(37,99,235,.35),
 transparent 70%);
-
 filter:blur(80px);
 }
 
 .bg::after{
 content:"";
 position:absolute;
-right:-220px;
 bottom:-250px;
+right:-200px;
 width:700px;
 height:700px;
-
-background:
-radial-gradient(circle,
-rgba(168,85,247,.45) 0%,
-rgba(168,85,247,.18) 40%,
+background:radial-gradient(circle,
+rgba(168,85,247,.30),
 transparent 70%);
-
-filter:blur(90px);
+filter:blur(80px);
 }
 
-.blur1{
+.blur{
 position:absolute;
 top:40%;
 left:50%;
 transform:translate(-50%,-50%);
 width:500px;
 height:500px;
-
-background:
-radial-gradient(circle,
+background:radial-gradient(circle,
 rgba(0,183,255,.10),
 transparent 70%);
-
-filter:blur(60px);
+filter:blur(70px);
 }
 
-.blur2{
-position:absolute;
-bottom:10%;
-left:10%;
-width:350px;
-height:350px;
-
-background:
-radial-gradient(circle,
-rgba(59,130,246,.10),
-transparent 70%);
-
-filter:blur(50px);
-}
-
-.blur3{
-position:absolute;
-top:65%;
-right:10%;
-width:350px;
-height:350px;
-
-background:
-radial-gradient(circle,
-rgba(168,85,247,.12),
-transparent 70%);
-
-filter:blur(55px);
-}
-
-/* =========================
-CONTAINER
-========================= */
+/* CONTAINER */
 
 .container{
 max-width:850px;
@@ -133,38 +88,28 @@ margin:auto;
 padding:20px;
 }
 
-/* =========================
-HEADER
-========================= */
+/* HEADER */
 
 .header{
 text-align:center;
-padding-top:30px;
-margin-bottom:30px;
+padding:30px 10px;
 }
 
 .logo{
-width:100px;
-height:100px;
+width:95px;
+height:95px;
 margin:auto;
 border-radius:28px;
-
+background:linear-gradient(135deg,#2563eb,#9333ea);
 display:flex;
 align-items:center;
 justify-content:center;
-
 font-size:48px;
-
-background:
-linear-gradient(135deg,#2563eb,#9333ea);
-
 box-shadow:
-0 0 40px rgba(59,130,246,.35),
-0 0 80px rgba(147,51,234,.25);
-
-margin-bottom:22px;
-
+0 0 40px rgba(59,130,246,.4),
+0 0 80px rgba(168,85,247,.3);
 animation:float 4s ease-in-out infinite;
+margin-bottom:22px;
 }
 
 @keyframes float{
@@ -174,198 +119,139 @@ transform:translateY(-10px);
 }
 
 .title{
-font-size:68px;
+font-size:58px;
 font-weight:800;
-line-height:1;
-
-background:
-linear-gradient(
-to right,
-#7dd3fc,
-#60a5fa,
-#e879f9
-);
-
+line-height:1.1;
+background:linear-gradient(to right,#60a5fa,#93c5fd,#e879f9);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
-
-margin-bottom:15px;
+margin-bottom:12px;
+text-shadow:0 0 30px rgba(96,165,250,.15);
 }
 
 .subtitle{
-font-size:24px;
+font-size:22px;
 color:#cbd5e1;
 }
 
-/* =========================
-SEARCH
-========================= */
+/* SEARCH */
 
 .searchBox{
-margin:25px 0 20px;
-position:sticky;
-top:10px;
-z-index:100;
-}
-
-.searchWrap{
+margin:35px 0;
 position:relative;
 }
 
 .searchInput{
 width:100%;
-height:65px;
+height:75px;
 border:none;
 outline:none;
-
-padding:0 20px 0 60px;
-
-border-radius:22px;
-
-font-size:18px;
-font-weight:600;
-
-background:rgba(7,14,35,.88);
-
-backdrop-filter:blur(18px);
-
+padding:0 25px 0 70px;
+border-radius:24px;
+font-size:22px;
+background:rgba(8,15,35,.88);
 color:white;
-
-border:1px solid rgba(59,130,246,.25);
-
-box-shadow:
-0 0 20px rgba(0,0,0,.25),
-inset 0 0 20px rgba(255,255,255,.02);
-
-transition:.35s;
+border:1px solid rgba(255,255,255,.06);
+backdrop-filter:blur(20px);
+transition:.3s;
 }
 
 .searchInput:focus{
-
-border-color:#60a5fa;
-
+border-color:#3b82f6;
 box-shadow:
-0 0 30px rgba(59,130,246,.25),
-0 0 70px rgba(168,85,247,.12);
-
-transform:scale(1.01);
+0 0 25px rgba(59,130,246,.25);
 }
 
 .searchInput::placeholder{
-color:#8da2c7;
+color:#94a3b8;
 }
 
 .searchIcon{
 position:absolute;
-left:20px;
+left:24px;
 top:50%;
 transform:translateY(-50%);
-font-size:22px;
+font-size:26px;
 color:#94a3b8;
 }
 
-/* =========================
-CARD
-========================= */
+/* CARD */
 
 .card{
-
 background:
 linear-gradient(
 135deg,
-rgba(15,23,60,.95),
-rgba(8,13,40,.95)
+rgba(12,20,45,.95),
+rgba(6,10,28,.96)
 );
 
 border:1px solid rgba(255,255,255,.05);
 
-border-radius:22px;
+border-radius:26px;
+padding:18px;
+margin-bottom:16px;
 
-padding:15px;
-
-margin-bottom:13px;
-
+transition:.3s;
 cursor:pointer;
 
-transition:.35s;
-
-overflow:hidden;
-
-position:relative;
-
-backdrop-filter:blur(18px);
+backdrop-filter:blur(20px);
 
 box-shadow:
-0 0 25px rgba(0,0,0,.25),
-inset 0 0 25px rgba(255,255,255,.02);
+0 0 30px rgba(0,0,0,.35);
 }
 
 .card:hover{
-
-transform:translateY(-4px);
-
-border-color:#3b82f6;
-
+transform:translateY(-3px);
+border-color:#2563eb;
 box-shadow:
-0 0 35px rgba(59,130,246,.18),
-0 0 70px rgba(168,85,247,.08);
+0 0 25px rgba(37,99,235,.25);
 }
 
 .top{
 display:flex;
 align-items:center;
 justify-content:space-between;
-gap:12px;
+gap:15px;
 }
 
 .left{
 display:flex;
 align-items:center;
-gap:14px;
+gap:15px;
 min-width:0;
 }
 
 .flag{
-width:50px;
-height:50px;
+width:58px;
+height:58px;
 border-radius:50%;
 object-fit:cover;
-
-box-shadow:
-0 0 20px rgba(255,255,255,.12);
-
 flex-shrink:0;
+box-shadow:0 0 20px rgba(255,255,255,.10);
 }
 
 .country{
-font-size:20px;
+font-size:26px;
 font-weight:700;
 line-height:1.1;
-
 word-break:break-word;
 }
 
 .route{
-font-size:12px;
+font-size:14px;
 color:#94a3b8;
-margin-top:5px;
+margin-top:4px;
 }
 
 .price{
-font-size:24px;
+font-size:34px;
 font-weight:800;
-
 color:#22c55e;
-
-text-shadow:
-0 0 20px rgba(34,197,94,.4);
-
+text-shadow:0 0 15px rgba(34,197,94,.4);
 flex-shrink:0;
 }
 
-/* =========================
-DETAILS
-========================= */
+/* DETAILS */
 
 .details{
 display:none;
@@ -378,150 +264,83 @@ display:block;
 }
 
 @keyframes fade{
-
 from{
 opacity:0;
 transform:translateY(10px);
 }
-
 to{
 opacity:1;
 transform:translateY(0);
 }
-
 }
-
-.workBox{
-
-background:
-linear-gradient(
-135deg,
-#2563eb,
-#3b82f6
-);
-
-padding:20px;
-
-border-radius:20px;
-
-margin-bottom:18px;
-}
-
-.workBox h4{
-font-size:18px;
-margin-bottom:10px;
-}
-
-.workPrice{
-font-size:38px;
-font-weight:800;
-}
-
-/* =========================
-CALCULATOR
-========================= */
 
 .calc{
-
-background:
-rgba(255,255,255,.03);
-
-padding:18px;
-
-border-radius:20px;
-
+background:rgba(255,255,255,.03);
+border-radius:22px;
+padding:20px;
 border:1px solid rgba(255,255,255,.04);
 }
 
 .calc h3{
-font-size:22px;
-margin-bottom:16px;
+font-size:24px;
+margin-bottom:15px;
 }
 
 .smsInput{
 width:100%;
-height:58px;
-
+height:60px;
 border:none;
 outline:none;
-
-padding:0 18px;
-
 border-radius:18px;
-
+padding:0 18px;
+font-size:20px;
 background:#081126;
-
-font-size:18px;
 color:white;
-
-margin-bottom:16px;
-
 border:1px solid rgba(59,130,246,.3);
+margin-bottom:18px;
 }
 
 .result{
-
 background:#081126;
-
-padding:18px;
-
 border-radius:18px;
-
-font-size:15px;
-
+padding:18px;
+font-size:17px;
 line-height:2;
 }
 
 .final{
-font-size:36px;
+font-size:38px;
 font-weight:800;
 color:#22c55e;
-margin-top:8px;
+margin-top:10px;
 }
 
-/* =========================
-NO RESULT
-========================= */
+/* NOT FOUND */
 
-.noResult{
-
-padding:40px 20px;
-
-border-radius:22px;
-
-background:
-linear-gradient(
-135deg,
-rgba(15,23,60,.95),
-rgba(8,13,40,.95)
-);
-
-border:1px solid rgba(255,255,255,.05);
-
+.notfound{
 text-align:center;
-
-animation:fade .4s ease;
+padding:40px 20px;
+background:rgba(255,255,255,.03);
+border-radius:25px;
+border:1px solid rgba(255,255,255,.04);
 }
 
-.noResult h2{
-font-size:22px;
+.notfound h2{
+font-size:28px;
 margin-bottom:10px;
 color:#f87171;
 }
 
-.noResult p{
-font-size:14px;
+.notfound p{
+font-size:16px;
 color:#cbd5e1;
-line-height:1.7;
 }
 
-/* =========================
-FOOTER
-========================= */
+/* FOOTER */
 
 .footer{
 text-align:center;
-padding:40px 0 20px;
+padding:45px 0 25px;
 font-size:18px;
 color:#cbd5e1;
 }
@@ -531,57 +350,48 @@ color:#60a5fa;
 font-weight:700;
 }
 
-/* =========================
-MOBILE
-========================= */
+/* MOBILE */
 
 @media(max-width:768px){
 
 .container{
-padding:14px;
+padding:15px;
 }
 
 .logo{
-width:82px;
-height:82px;
-font-size:40px;
-border-radius:24px;
+width:85px;
+height:85px;
+font-size:42px;
 }
 
 .title{
-font-size:32px;
-line-height:1.15;
+font-size:34px;
 }
 
 .subtitle{
-font-size:14px;
+font-size:15px;
 }
 
 .searchInput{
-height:58px;
-font-size:16px;
-padding-left:52px;
-border-radius:18px;
+height:65px;
+font-size:18px;
+padding-left:60px;
 }
 
 .searchIcon{
-left:18px;
-font-size:18px;
+font-size:22px;
+left:20px;
 }
 
 .card{
-padding:13px;
+padding:14px;
+border-radius:20px;
 margin-bottom:12px;
-border-radius:18px;
 }
 
 .flag{
-width:46px;
-height:46px;
-}
-
-.left{
-gap:12px;
+width:48px;
+height:48px;
 }
 
 .country{
@@ -593,15 +403,24 @@ font-size:11px;
 }
 
 .price{
-font-size:20px;
+font-size:18px;
 }
 
-.workPrice{
-font-size:32px;
+.calc h3{
+font-size:18px;
+}
+
+.smsInput{
+height:52px;
+font-size:17px;
+}
+
+.result{
+font-size:14px;
 }
 
 .final{
-font-size:30px;
+font-size:28px;
 }
 
 .footer{
@@ -616,36 +435,19 @@ font-size:15px;
 <body>
 
 <div class="bg">
-<div class="blur1"></div>
-<div class="blur2"></div>
-<div class="blur3"></div>
+<div class="blur"></div>
 </div>
 
 <div class="container">
 
 <div class="header">
-
-<div class="logo">
-💎
-</div>
-
-<div class="title">
-AHS SMS Pricing
-</div>
-
-<div class="subtitle">
-Premium SMS Earnings Dashboard
-</div>
-
+<div class="logo">💎</div>
+<div class="title">AHS SMS Pricing</div>
+<div class="subtitle">Premium SMS Earnings Dashboard</div>
 </div>
 
 <div class="searchBox">
-
-<div class="searchWrap">
-
-<div class="searchIcon">
-🔍
-</div>
+<div class="searchIcon">🔍</div>
 
 <input
 type="text"
@@ -653,8 +455,6 @@ class="searchInput"
 placeholder="Search country..."
 id="search"
 >
-
-</div>
 
 </div>
 
@@ -747,26 +547,18 @@ list.innerHTML = "";
 if(data.length === 0){
 
 list.innerHTML = `
-
-<div class="noResult">
-
-<h2>
-❌ This Country is not available
-</h2>
-
+<div class="notfound">
+<h2>❌ Country Not Available</h2>
 <p>
-Please search another country.<br>
-This SMS route is currently unavailable.
+Sorry, this country is currently unavailable in our SMS route list.
 </p>
-
 </div>
-
 `;
 
 return;
 }
 
-data.forEach((c,index)=>{
+data.forEach(c=>{
 
 const card = document.createElement("div");
 
@@ -781,44 +573,21 @@ card.innerHTML = `
 <img class="flag" src="${c.flag}">
 
 <div>
-
-<div class="country">
-${c.name}
-</div>
-
-<div class="route">
-Premium SMS Route
+<div class="country">${c.name}</div>
+<div class="route">Premium SMS Route</div>
 </div>
 
 </div>
 
-</div>
-
-<div class="price">
-$${c.price}
-</div>
+<div class="price">$${c.price}</div>
 
 </div>
 
 <div class="details">
 
-<div class="workBox">
-
-<h4>
-💰 Per SMS Earnings
-</h4>
-
-<div class="workPrice">
-$${c.price}
-</div>
-
-</div>
-
 <div class="calc">
 
-<h3>
-🧮 SMS Calculator
-</h3>
+<h3>🧮 SMS Earnings Calculator</h3>
 
 <input
 type="number"
@@ -843,9 +612,7 @@ $${c.price}
 
 ✅ Total Earnings:
 
-<div class="final">
-$0
-</div>
+<div class="final">$0</div>
 
 </div>
 
@@ -857,16 +624,13 @@ $0
 
 card.onclick = function(e){
 
-if(
-e.target.classList.contains("smsInput")
-)return;
+if(e.target.classList.contains("smsInput"))
+return;
 
 document.querySelectorAll(".card").forEach(el=>{
-
 if(el!==card){
 el.classList.remove("active");
 }
-
 });
 
 card.classList.toggle("active");
@@ -890,7 +654,7 @@ const box = input.parentElement.querySelector(".result");
 box.querySelector(".smsCount").innerText = qty;
 
 box.querySelector(".final").innerText =
-"$" + parseFloat(result.toFixed(4));
+"$" + Number(result.toFixed(4));
 
 }
 

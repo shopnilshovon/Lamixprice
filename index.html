@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>AHS SMS Pricing</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 
@@ -55,6 +56,7 @@ rgba(59,130,246,.55) 0%,
 rgba(59,130,246,.25) 30%,
 transparent 70%);
 filter:blur(60px);
+animation:move1 12s infinite alternate ease-in-out;
 }
 
 .bg::after{
@@ -70,6 +72,7 @@ rgba(168,85,247,.45) 0%,
 rgba(168,85,247,.18) 35%,
 transparent 70%);
 filter:blur(70px);
+animation:move2 14s infinite alternate ease-in-out;
 }
 
 .blur1{
@@ -86,30 +89,16 @@ transparent 70%);
 filter:blur(50px);
 }
 
-.blur2{
-position:absolute;
-bottom:10%;
-left:20%;
-width:350px;
-height:350px;
-background:
-radial-gradient(circle,
-rgba(59,130,246,.10) 0%,
-transparent 70%);
-filter:blur(40px);
+@keyframes move1{
+100%{
+transform:translate(70px,50px);
+}
 }
 
-.blur3{
-position:absolute;
-top:60%;
-right:10%;
-width:320px;
-height:320px;
-background:
-radial-gradient(circle,
-rgba(168,85,247,.12) 0%,
-transparent 70%);
-filter:blur(45px);
+@keyframes move2{
+100%{
+transform:translate(-80px,-40px);
+}
 }
 
 /* =========================
@@ -117,9 +106,9 @@ CONTAINER
 ========================= */
 
 .container{
-max-width:900px;
+max-width:950px;
 margin:auto;
-padding:25px;
+padding:22px;
 }
 
 /* =========================
@@ -128,35 +117,31 @@ HEADER
 
 .header{
 text-align:center;
+padding-top:20px;
 margin-bottom:40px;
+animation:fadeDown 1s ease;
 }
 
 .logo{
 width:120px;
 height:120px;
 margin:auto;
-border-radius:30px;
+border-radius:32px;
 display:flex;
 align-items:center;
 justify-content:center;
-font-size:60px;
+font-size:58px;
 background:linear-gradient(135deg,#2563eb,#9333ea);
 box-shadow:
 0 0 50px rgba(147,51,234,.5),
-0 0 100px rgba(37,99,235,.3);
-margin-bottom:25px;
+0 0 100px rgba(37,99,235,.35);
+margin-bottom:24px;
 animation:float 4s ease-in-out infinite;
-}
-
-@keyframes float{
-50%{
-transform:translateY(-10px);
-}
 }
 
 .title{
 font-size:72px;
-font-weight:800;
+font-weight:900;
 line-height:1;
 background:linear-gradient(to right,#7dd3fc,#60a5fa,#e879f9);
 -webkit-background-clip:text;
@@ -165,7 +150,7 @@ margin-bottom:15px;
 }
 
 .subtitle{
-font-size:24px;
+font-size:22px;
 color:#cbd5e1;
 }
 
@@ -175,24 +160,35 @@ SEARCH
 
 .searchBox{
 margin:35px 0;
-position:relative;
+position:sticky;
+top:10px;
+z-index:100;
 }
 
 .searchInput{
 width:100%;
-height:85px;
+height:82px;
 border:none;
 outline:none;
-padding:0 30px 0 85px;
+padding:0 30px 0 82px;
 border-radius:30px;
-font-size:32px;
-background:rgba(8,15,40,.85);
-backdrop-filter:blur(20px);
+font-size:28px;
+background:rgba(8,15,40,.82);
+backdrop-filter:blur(18px);
 color:white;
 border:1px solid rgba(255,255,255,.08);
 box-shadow:
-0 0 25px rgba(0,0,0,.4),
+0 0 30px rgba(0,0,0,.35),
 inset 0 0 25px rgba(255,255,255,.02);
+transition:.35s;
+}
+
+.searchInput:focus{
+border-color:#3b82f6;
+box-shadow:
+0 0 40px rgba(59,130,246,.25),
+0 0 90px rgba(168,85,247,.15);
+transform:scale(1.01);
 }
 
 .searchInput::placeholder{
@@ -201,10 +197,10 @@ color:#94a3b8;
 
 .searchIcon{
 position:absolute;
-left:30px;
+left:28px;
 top:50%;
 transform:translateY(-50%);
-font-size:36px;
+font-size:34px;
 color:#94a3b8;
 }
 
@@ -216,31 +212,33 @@ CARD
 background:
 linear-gradient(
 135deg,
-rgba(15,23,60,.95),
-rgba(8,13,40,.95)
+rgba(15,23,60,.96),
+rgba(8,13,40,.96)
 );
 
-border:1px solid rgba(255,255,255,.08);
+border:1px solid rgba(255,255,255,.07);
 
-border-radius:35px;
+border-radius:34px;
 padding:28px;
-margin-bottom:28px;
+margin-bottom:26px;
 cursor:pointer;
 transition:.35s;
 overflow:hidden;
 position:relative;
-backdrop-filter:blur(18px);
+backdrop-filter:blur(16px);
 
 box-shadow:
 0 0 30px rgba(0,0,0,.35),
-inset 0 0 30px rgba(255,255,255,.02);
+inset 0 0 25px rgba(255,255,255,.02);
+
+animation:fadeUp .6s ease;
 }
 
 .card:hover{
 transform:translateY(-6px) scale(1.01);
 border-color:#3b82f6;
 box-shadow:
-0 0 40px rgba(59,130,246,.25),
+0 0 45px rgba(59,130,246,.25),
 0 0 90px rgba(168,85,247,.15);
 }
 
@@ -254,13 +252,13 @@ gap:15px;
 .left{
 display:flex;
 align-items:center;
-gap:22px;
+gap:20px;
 min-width:0;
 }
 
 .flag{
-width:80px;
-height:80px;
+width:78px;
+height:78px;
 border-radius:50%;
 object-fit:cover;
 box-shadow:0 0 25px rgba(255,255,255,.12);
@@ -268,23 +266,23 @@ flex-shrink:0;
 }
 
 .country{
-font-size:42px;
+font-size:40px;
 font-weight:800;
 line-height:1.1;
 word-break:break-word;
 }
 
 .route{
-font-size:22px;
+font-size:20px;
 color:#94a3b8;
-margin-top:8px;
+margin-top:6px;
 }
 
 .price{
 font-size:48px;
-font-weight:800;
+font-weight:900;
 color:#22c55e;
-text-shadow:0 0 20px rgba(34,197,94,.5);
+text-shadow:0 0 18px rgba(34,197,94,.5);
 flex-shrink:0;
 }
 
@@ -294,7 +292,7 @@ DETAILS
 
 .details{
 display:none;
-margin-top:25px;
+margin-top:24px;
 animation:fade .4s ease;
 }
 
@@ -302,64 +300,38 @@ animation:fade .4s ease;
 display:block;
 }
 
-@keyframes fade{
-from{
-opacity:0;
-transform:translateY(10px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
-
-.notice{
-background:rgba(255,255,255,.03);
-padding:25px;
-border-radius:25px;
-border:1px solid rgba(255,255,255,.05);
-margin-bottom:20px;
-}
-
-.notice h3{
-font-size:30px;
-margin-bottom:15px;
-color:#facc15;
-}
-
-.notice p{
-font-size:22px;
-line-height:1.8;
-color:#dbeafe;
-}
-
 .workBox{
 background:linear-gradient(135deg,#2563eb,#3b82f6);
-padding:25px;
-border-radius:25px;
-margin-bottom:20px;
+padding:26px;
+border-radius:26px;
+margin-bottom:22px;
+box-shadow:0 0 40px rgba(37,99,235,.25);
 }
 
 .workBox h4{
 font-size:24px;
-margin-bottom:10px;
+margin-bottom:12px;
 }
 
 .workPrice{
-font-size:60px;
-font-weight:800;
+font-size:58px;
+font-weight:900;
 }
+
+/* =========================
+CALCULATOR
+========================= */
 
 .calc{
 background:rgba(255,255,255,.03);
-padding:25px;
-border-radius:25px;
+padding:26px;
+border-radius:26px;
 border:1px solid rgba(255,255,255,.05);
 }
 
 .calc h3{
 font-size:32px;
-margin-bottom:20px;
+margin-bottom:18px;
 }
 
 .smsInput{
@@ -368,25 +340,31 @@ height:75px;
 border:none;
 outline:none;
 padding:0 25px;
-border-radius:20px;
+border-radius:22px;
 background:#081126;
-font-size:28px;
+font-size:26px;
 color:white;
 margin-bottom:20px;
-border:1px solid rgba(59,130,246,.4);
+border:1px solid rgba(59,130,246,.35);
+transition:.3s;
+}
+
+.smsInput:focus{
+border-color:#3b82f6;
+box-shadow:0 0 25px rgba(59,130,246,.25);
 }
 
 .result{
 background:#081126;
 padding:25px;
-border-radius:20px;
-font-size:24px;
+border-radius:22px;
+font-size:22px;
 line-height:2;
 }
 
 .final{
-font-size:55px;
-font-weight:800;
+font-size:56px;
+font-weight:900;
 color:#22c55e;
 margin-top:10px;
 }
@@ -397,14 +375,57 @@ FOOTER
 
 .footer{
 text-align:center;
-padding:50px 0 20px;
-font-size:24px;
+padding:45px 0 20px;
+font-size:22px;
 color:#cbd5e1;
 }
 
 .footer span{
 color:#60a5fa;
-font-weight:700;
+font-weight:800;
+}
+
+/* =========================
+ANIMATION
+========================= */
+
+@keyframes float{
+50%{
+transform:translateY(-10px);
+}
+}
+
+@keyframes fade{
+from{
+opacity:0;
+transform:translateY(12px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(25px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@keyframes fadeDown{
+from{
+opacity:0;
+transform:translateY(-25px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
 }
 
 /* =========================
@@ -414,18 +435,18 @@ MOBILE
 @media(max-width:768px){
 
 .container{
-padding:18px;
+padding:16px;
 }
 
 .logo{
 width:90px;
 height:90px;
-font-size:45px;
+font-size:42px;
 border-radius:25px;
 }
 
 .title{
-font-size:34px;
+font-size:38px;
 line-height:1.15;
 }
 
@@ -434,7 +455,7 @@ font-size:15px;
 }
 
 .searchInput{
-height:68px;
+height:66px;
 font-size:18px;
 padding-left:65px;
 border-radius:22px;
@@ -442,12 +463,12 @@ border-radius:22px;
 
 .searchIcon{
 left:22px;
-font-size:26px;
+font-size:24px;
 }
 
 .card{
 padding:18px;
-border-radius:25px;
+border-radius:24px;
 }
 
 .left{
@@ -455,12 +476,12 @@ gap:14px;
 }
 
 .flag{
-width:52px;
-height:52px;
+width:54px;
+height:54px;
 }
 
 .country{
-font-size:21px;
+font-size:22px;
 }
 
 .route{
@@ -471,12 +492,9 @@ font-size:13px;
 font-size:24px;
 }
 
-.notice h3{
-font-size:20px;
-}
-
-.notice p{
-font-size:15px;
+.workBox{
+padding:20px;
+border-radius:22px;
 }
 
 .workBox h4{
@@ -487,6 +505,11 @@ font-size:18px;
 font-size:36px;
 }
 
+.calc{
+padding:20px;
+border-radius:22px;
+}
+
 .calc h3{
 font-size:22px;
 }
@@ -494,34 +517,34 @@ font-size:22px;
 .smsInput{
 height:60px;
 font-size:18px;
+border-radius:18px;
 }
 
 .result{
+padding:18px;
 font-size:16px;
 }
 
 .final{
-font-size:38px;
+font-size:36px;
 }
 
 .footer{
-font-size:16px;
+font-size:15px;
 }
 
 .bg::before{
 top:-180px;
-left:-220px;
+left:-250px;
 width:600px;
 height:600px;
-opacity:.9;
 }
 
 .bg::after{
-right:-240px;
+right:-250px;
 bottom:-200px;
 width:600px;
 height:600px;
-opacity:.9;
 }
 
 }
@@ -533,21 +556,37 @@ opacity:.9;
 
 <div class="bg">
 <div class="blur1"></div>
-<div class="blur2"></div>
-<div class="blur3"></div>
 </div>
 
 <div class="container">
 
 <div class="header">
+
 <div class="logo">💎</div>
-<div class="title">AHS SMS Pricing</div>
-<div class="subtitle">Premium SMS Working Price Dashboard</div>
+
+<div class="title">
+AHS SMS Pricing
+</div>
+
+<div class="subtitle">
+Premium SMS Earnings Dashboard
+</div>
+
 </div>
 
 <div class="searchBox">
-<div class="searchIcon">🔍</div>
-<input type="text" class="searchInput" placeholder="Search country..." id="search">
+
+<div class="searchIcon">
+🔍
+</div>
+
+<input
+type="text"
+class="searchInput"
+placeholder="Search country..."
+id="search"
+>
+
 </div>
 
 <div id="list"></div>
@@ -562,55 +601,55 @@ Powered By <span>AHS SHOVON</span>
 
 const countries = [
 
-{name:"Afghanistan",price:0.013,flag:"https://flagcdn.com/w320/af.png"},
-{name:"Algeria",price:0.018,flag:"https://flagcdn.com/w320/dz.png"},
-{name:"Angola",price:0.015,flag:"https://flagcdn.com/w320/ao.png"},
-{name:"Argentina",price:0.013,flag:"https://flagcdn.com/w320/ar.png"},
-{name:"Armenia",price:0.013,flag:"https://flagcdn.com/w320/am.png"},
-{name:"Azerbaijan",price:0.01,flag:"https://flagcdn.com/w320/az.png"},
-{name:"Belarus",price:0.01,flag:"https://flagcdn.com/w320/by.png"},
-{name:"Benin",price:0.013,flag:"https://flagcdn.com/w320/bj.png"},
-{name:"Bhutan",price:0.01,flag:"https://flagcdn.com/w320/bt.png"},
-{name:"Bolivia",price:0.01,flag:"https://flagcdn.com/w320/bo.png"},
-{name:"Cambodia",price:0.023,flag:"https://flagcdn.com/w320/kh.png"},
-{name:"Cameroon",price:0.013,flag:"https://flagcdn.com/w320/cm.png"},
-{name:"Comoros",price:0.023,flag:"https://flagcdn.com/w320/km.png"},
-{name:"Egypt",price:0.01,flag:"https://flagcdn.com/w320/eg.png"},
-{name:"Ethiopia",price:0.013,flag:"https://flagcdn.com/w320/et.png"},
-{name:"Germany",price:0.013,flag:"https://flagcdn.com/w320/de.png"},
-{name:"Indonesia",price:0.013,flag:"https://flagcdn.com/w320/id.png"},
-{name:"Iraq",price:0.013,flag:"https://flagcdn.com/w320/iq.png"},
-{name:"Jordan",price:0.013,flag:"https://flagcdn.com/w320/jo.png"},
-{name:"Kazakhstan",price:0.013,flag:"https://flagcdn.com/w320/kz.png"},
-{name:"Kenya",price:0.013,flag:"https://flagcdn.com/w320/ke.png"},
-{name:"Kuwait",price:0.01,flag:"https://flagcdn.com/w320/kw.png"},
-{name:"Libya",price:0.013,flag:"https://flagcdn.com/w320/ly.png"},
-{name:"Malaysia",price:0.019,flag:"https://flagcdn.com/w320/my.png"},
-{name:"Morocco",price:0.013,flag:"https://flagcdn.com/w320/ma.png"},
-{name:"Myanmar",price:0.017,flag:"https://flagcdn.com/w320/mm.png"},
-{name:"Nepal",price:0.01,flag:"https://flagcdn.com/w320/np.png"},
-{name:"Nigeria",price:0.013,flag:"https://flagcdn.com/w320/ng.png"},
-{name:"Oman",price:0.013,flag:"https://flagcdn.com/w320/om.png"},
-{name:"Pakistan",price:0.013,flag:"https://flagcdn.com/w320/pk.png"},
-{name:"Palestine",price:0.021,flag:"https://flagcdn.com/w320/ps.png"},
-{name:"Russia",price:0.013,flag:"https://flagcdn.com/w320/ru.png"},
-{name:"Saudi Arabia",price:0.01,flag:"https://flagcdn.com/w320/sa.png"},
-{name:"Senegal",price:0.013,flag:"https://flagcdn.com/w320/sn.png"},
-{name:"Sri Lanka",price:0.023,flag:"https://flagcdn.com/w320/lk.png"},
-{name:"Sudan",price:0.012,flag:"https://flagcdn.com/w320/sd.png"},
-{name:"Syria",price:0.013,flag:"https://flagcdn.com/w320/sy.png"},
-{name:"Tajikistan",price:0.01,flag:"https://flagcdn.com/w320/tj.png"},
-{name:"Tanzania",price:0.025,flag:"https://flagcdn.com/w320/tz.png"},
-{name:"Tunisia",price:0.018,flag:"https://flagcdn.com/w320/tn.png"},
-{name:"Turkey",price:0.012,flag:"https://flagcdn.com/w320/tr.png"},
-{name:"Uganda",price:0.012,flag:"https://flagcdn.com/w320/ug.png"},
-{name:"Ukraine",price:0.012,flag:"https://flagcdn.com/w320/ua.png"},
-{name:"United Arab Emirates",price:0.01,flag:"https://flagcdn.com/w320/ae.png"},
-{name:"Uzbekistan",price:0.013,flag:"https://flagcdn.com/w320/uz.png"},
-{name:"Vietnam",price:0.013,flag:"https://flagcdn.com/w320/vn.png"},
-{name:"Yemen",price:0.013,flag:"https://flagcdn.com/w320/ye.png"},
-{name:"Zambia",price:0.013,flag:"https://flagcdn.com/w320/zm.png"},
-{name:"Zimbabwe",price:0.014,flag:"https://flagcdn.com/w320/zw.png"}
+{name:"Afghanistan",price:0.0104,flag:"https://flagcdn.com/w320/af.png"},
+{name:"Algeria",price:0.0144,flag:"https://flagcdn.com/w320/dz.png"},
+{name:"Angola",price:0.0120,flag:"https://flagcdn.com/w320/ao.png"},
+{name:"Argentina",price:0.0104,flag:"https://flagcdn.com/w320/ar.png"},
+{name:"Armenia",price:0.0104,flag:"https://flagcdn.com/w320/am.png"},
+{name:"Azerbaijan",price:0.0080,flag:"https://flagcdn.com/w320/az.png"},
+{name:"Belarus",price:0.0080,flag:"https://flagcdn.com/w320/by.png"},
+{name:"Benin",price:0.0104,flag:"https://flagcdn.com/w320/bj.png"},
+{name:"Bhutan",price:0.0080,flag:"https://flagcdn.com/w320/bt.png"},
+{name:"Bolivia",price:0.0080,flag:"https://flagcdn.com/w320/bo.png"},
+{name:"Cambodia",price:0.0184,flag:"https://flagcdn.com/w320/kh.png"},
+{name:"Cameroon",price:0.0104,flag:"https://flagcdn.com/w320/cm.png"},
+{name:"Comoros",price:0.0184,flag:"https://flagcdn.com/w320/km.png"},
+{name:"Egypt",price:0.0080,flag:"https://flagcdn.com/w320/eg.png"},
+{name:"Ethiopia",price:0.0104,flag:"https://flagcdn.com/w320/et.png"},
+{name:"Germany",price:0.0104,flag:"https://flagcdn.com/w320/de.png"},
+{name:"Indonesia",price:0.0104,flag:"https://flagcdn.com/w320/id.png"},
+{name:"Iraq",price:0.0104,flag:"https://flagcdn.com/w320/iq.png"},
+{name:"Jordan",price:0.0104,flag:"https://flagcdn.com/w320/jo.png"},
+{name:"Kazakhstan",price:0.0104,flag:"https://flagcdn.com/w320/kz.png"},
+{name:"Kenya",price:0.0104,flag:"https://flagcdn.com/w320/ke.png"},
+{name:"Kuwait",price:0.0080,flag:"https://flagcdn.com/w320/kw.png"},
+{name:"Libya",price:0.0104,flag:"https://flagcdn.com/w320/ly.png"},
+{name:"Malaysia",price:0.0152,flag:"https://flagcdn.com/w320/my.png"},
+{name:"Morocco",price:0.0104,flag:"https://flagcdn.com/w320/ma.png"},
+{name:"Myanmar",price:0.0136,flag:"https://flagcdn.com/w320/mm.png"},
+{name:"Nepal",price:0.0080,flag:"https://flagcdn.com/w320/np.png"},
+{name:"Nigeria",price:0.0104,flag:"https://flagcdn.com/w320/ng.png"},
+{name:"Oman",price:0.0104,flag:"https://flagcdn.com/w320/om.png"},
+{name:"Pakistan",price:0.0104,flag:"https://flagcdn.com/w320/pk.png"},
+{name:"Palestine",price:0.0168,flag:"https://flagcdn.com/w320/ps.png"},
+{name:"Russia",price:0.0104,flag:"https://flagcdn.com/w320/ru.png"},
+{name:"Saudi Arabia",price:0.0080,flag:"https://flagcdn.com/w320/sa.png"},
+{name:"Senegal",price:0.0104,flag:"https://flagcdn.com/w320/sn.png"},
+{name:"Sri Lanka",price:0.0184,flag:"https://flagcdn.com/w320/lk.png"},
+{name:"Sudan",price:0.0096,flag:"https://flagcdn.com/w320/sd.png"},
+{name:"Syria",price:0.0104,flag:"https://flagcdn.com/w320/sy.png"},
+{name:"Tajikistan",price:0.0080,flag:"https://flagcdn.com/w320/tj.png"},
+{name:"Tanzania",price:0.0200,flag:"https://flagcdn.com/w320/tz.png"},
+{name:"Tunisia",price:0.0144,flag:"https://flagcdn.com/w320/tn.png"},
+{name:"Turkey",price:0.0096,flag:"https://flagcdn.com/w320/tr.png"},
+{name:"Uganda",price:0.0096,flag:"https://flagcdn.com/w320/ug.png"},
+{name:"Ukraine",price:0.0096,flag:"https://flagcdn.com/w320/ua.png"},
+{name:"United Arab Emirates",price:0.0080,flag:"https://flagcdn.com/w320/ae.png"},
+{name:"Uzbekistan",price:0.0104,flag:"https://flagcdn.com/w320/uz.png"},
+{name:"Vietnam",price:0.0104,flag:"https://flagcdn.com/w320/vn.png"},
+{name:"Yemen",price:0.0104,flag:"https://flagcdn.com/w320/ye.png"},
+{name:"Zambia",price:0.0104,flag:"https://flagcdn.com/w320/zm.png"},
+{name:"Zimbabwe",price:0.0112,flag:"https://flagcdn.com/w320/zw.png"}
 
 ];
 
@@ -622,61 +661,62 @@ list.innerHTML = "";
 
 data.forEach((c,index)=>{
 
-const working = (c.price * 0.90).toFixed(4);
-
 const card = document.createElement("div");
 card.className = "card";
 
 card.innerHTML = `
+
 <div class="top">
 
 <div class="left">
+
 <img class="flag" src="${c.flag}">
+
 <div>
-<div class="country">${c.name}</div>
-<div class="route">Premium SMS Route</div>
-</div>
+
+<div class="country">
+${c.name}
 </div>
 
-<div class="price">$${c.price}</div>
+<div class="route">
+Premium SMS Route
+</div>
+
+</div>
+
+</div>
+
+<div class="price">
+$${c.price}
+</div>
 
 </div>
 
 <div class="details">
 
-<div class="notice">
-<h3>⚠ 10% Service Charge Applied</h3>
+<div class="workBox">
 
-<p>
-Main Price:
-<b style="color:#22c55e;">$${c.price}</b>
+<h4>
+💰 Per SMS Earnings
+</h4>
 
-<br><br>
-
-10% Service Charge কেটে নেওয়ার পর আপনাদের কাজের মূল দাম (Working Price) হবে:
-
-<br><br>
-
-<b style="font-size:32px;color:#22c55e;">
-$${working}
-</b>
-</p>
+<div class="workPrice">
+$${c.price}
 </div>
 
-<div class="workBox">
-<h4>💰 Final Working Price</h4>
-<div class="workPrice">$${working}</div>
 </div>
 
 <div class="calc">
 
-<h3>🧮 SMS Calculator</h3>
+<h3>
+🧮 SMS Calculator
+</h3>
 
 <input
 type="number"
 class="smsInput"
 placeholder="Example: 100 SMS"
-oninput="calculate(this,${working})"
+oninput="calculate(this,${c.price})"
 >
 
 <div class="result">
@@ -686,14 +726,14 @@ oninput="calculate(this,${working})"
 
 <br>
 
-💵 Per SMS Working Price:
+💵 Per SMS Earnings:
 <b style="color:#22c55e;">
-$${working}
+$${c.price}
 </b>
 
 <br>
 
-✅ Final Working Amount:
+✅ Total Earnings:
 
 <div class="final">$0</div>
 
@@ -702,6 +742,7 @@ $${working}
 </div>
 
 </div>
+
 `;
 
 card.onclick = function(e){
@@ -711,9 +752,11 @@ e.target.classList.contains("smsInput")
 )return;
 
 document.querySelectorAll(".card").forEach(el=>{
+
 if(el!==card){
 el.classList.remove("active");
 }
+
 });
 
 card.classList.toggle("active");

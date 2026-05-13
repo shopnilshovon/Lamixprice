@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>AHS SMS Pricing</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -15,10 +14,6 @@ margin:0;
 padding:0;
 box-sizing:border-box;
 font-family:'Poppins',sans-serif;
-}
-
-html{
-scroll-behavior:smooth;
 }
 
 body{
@@ -60,7 +55,6 @@ rgba(37,99,235,.35),
 transparent 70%);
 
 filter:blur(80px);
-
 animation:move1 12s infinite alternate ease-in-out;
 }
 
@@ -78,24 +72,7 @@ rgba(168,85,247,.30),
 transparent 70%);
 
 filter:blur(80px);
-
 animation:move2 14s infinite alternate ease-in-out;
-}
-
-.blur{
-position:absolute;
-top:40%;
-left:50%;
-transform:translate(-50%,-50%);
-width:500px;
-height:500px;
-
-background:
-radial-gradient(circle,
-rgba(0,183,255,.10),
-transparent 70%);
-
-filter:blur(70px);
 }
 
 .grid{
@@ -112,12 +89,6 @@ mask-image:linear-gradient(to bottom,rgba(0,0,0,.7),transparent);
 
 /* ANIMATION */
 
-@keyframes float{
-50%{
-transform:translateY(-10px);
-}
-}
-
 @keyframes move1{
 100%{
 transform:translate(60px,50px);
@@ -130,6 +101,12 @@ transform:translate(-70px,-40px);
 }
 }
 
+@keyframes float{
+50%{
+transform:translateY(-10px);
+}
+}
+
 @keyframes fade{
 from{
 opacity:0;
@@ -138,14 +115,6 @@ transform:translateY(12px);
 to{
 opacity:1;
 transform:translateY(0);
-}
-}
-
-@keyframes glow{
-50%{
-box-shadow:
-0 0 30px rgba(59,130,246,.5),
-0 0 70px rgba(168,85,247,.3);
 }
 }
 
@@ -191,15 +160,12 @@ box-shadow:
 
 margin-bottom:24px;
 
-animation:
-float 4s ease-in-out infinite,
-glow 4s infinite ease-in-out;
+animation:float 4s ease-in-out infinite;
 }
 
 .title{
-font-size:64px;
+font-size:60px;
 font-weight:900;
-line-height:1.05;
 
 background:
 linear-gradient(
@@ -213,35 +179,12 @@ to right,
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 
-margin-bottom:15px;
-
-letter-spacing:-2px;
+margin-bottom:12px;
 }
 
 .subtitle{
-font-size:22px;
+font-size:20px;
 color:#cbd5e1;
-}
-
-.line{
-width:140px;
-height:4px;
-
-margin:28px auto 0;
-
-border-radius:20px;
-
-background:
-linear-gradient(
-to right,
-transparent,
-#60a5fa,
-#c084fc,
-transparent
-);
-
-box-shadow:
-0 0 20px rgba(96,165,250,.35);
 }
 
 /* STATS */
@@ -262,18 +205,15 @@ rgba(15,23,60,.95),
 rgba(8,13,40,.95)
 );
 
-border:1px solid rgba(255,255,255,.05);
-
 padding:22px;
 
 border-radius:22px;
 
+border:1px solid rgba(255,255,255,.05);
+
 text-align:center;
 
 backdrop-filter:blur(18px);
-
-box-shadow:
-0 0 25px rgba(0,0,0,.25);
 }
 
 .stat h2{
@@ -316,11 +256,11 @@ font-weight:600;
 background:
 rgba(8,15,35,.88);
 
-backdrop-filter:blur(20px);
-
 color:white;
 
 border:1px solid rgba(255,255,255,.05);
+
+backdrop-filter:blur(20px);
 
 transition:.3s;
 }
@@ -370,9 +310,6 @@ cursor:pointer;
 
 backdrop-filter:blur(20px);
 
-box-shadow:
-0 0 25px rgba(0,0,0,.3);
-
 animation:fade .4s ease;
 }
 
@@ -405,15 +342,11 @@ height:54px;
 border-radius:50%;
 object-fit:cover;
 flex-shrink:0;
-
-box-shadow:
-0 0 20px rgba(255,255,255,.08);
 }
 
 .country{
 font-size:20px;
 font-weight:700;
-line-height:1.1;
 }
 
 .route{
@@ -426,7 +359,6 @@ margin-top:4px;
 font-size:24px;
 font-weight:800;
 color:#22c55e;
-text-shadow:0 0 15px rgba(34,197,94,.4);
 }
 
 /* DETAILS */
@@ -502,7 +434,6 @@ margin-top:8px;
 
 .notfound{
 text-align:center;
-
 padding:40px 20px;
 
 background:
@@ -522,71 +453,6 @@ color:#f87171;
 .notfound p{
 font-size:15px;
 color:#cbd5e1;
-}
-
-/* LEADERBOARD */
-
-.leaderboard{
-margin-top:40px;
-}
-
-.sectionTitle{
-font-size:26px;
-font-weight:800;
-margin-bottom:18px;
-}
-
-.lbCard{
-
-display:flex;
-align-items:center;
-justify-content:space-between;
-
-padding:18px;
-
-margin-bottom:12px;
-
-border-radius:22px;
-
-background:
-linear-gradient(
-135deg,
-rgba(15,23,60,.95),
-rgba(8,13,40,.95)
-);
-
-border:1px solid rgba(255,255,255,.05);
-
-backdrop-filter:blur(18px);
-}
-
-.lbLeft{
-display:flex;
-align-items:center;
-gap:14px;
-}
-
-.rank{
-font-size:24px;
-font-weight:800;
-color:#facc15;
-}
-
-.lbFlag{
-width:46px;
-height:46px;
-border-radius:50%;
-}
-
-.lbName{
-font-size:18px;
-font-weight:700;
-}
-
-.lbPrice{
-font-size:20px;
-font-weight:800;
-color:#22c55e;
 }
 
 /* TELEGRAM */
@@ -666,10 +532,6 @@ font-size:34px;
 font-size:14px;
 }
 
-.line{
-width:90px;
-}
-
 .searchInput{
 height:58px;
 font-size:16px;
@@ -702,14 +564,6 @@ font-size:19px;
 font-size:28px;
 }
 
-.lbName{
-font-size:15px;
-}
-
-.lbPrice{
-font-size:16px;
-}
-
 .telegram{
 width:58px;
 height:58px;
@@ -724,7 +578,6 @@ font-size:28px;
 <body>
 
 <div class="bg">
-<div class="blur"></div>
 <div class="grid"></div>
 </div>
 
@@ -743,8 +596,6 @@ AHS SMS Pricing
 <div class="subtitle">
 Premium SMS Earnings Dashboard
 </div>
-
-<div class="line"></div>
 
 </div>
 
@@ -788,16 +639,6 @@ id="search"
 
 <div id="list"></div>
 
-<div class="leaderboard">
-
-<div class="sectionTitle">
-🏆 Top Paying Countries
-</div>
-
-<div id="leaderboard"></div>
-
-</div>
-
 <div class="footer">
 Powered By <span>AHS SHOVON</span>
 </div>
@@ -813,6 +654,14 @@ class="telegram"
 </a>
 
 <script>
+
+/* CLICK SOUND */
+
+const clickSound = new Audio(
+'https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3'
+);
+
+/* COUNTRIES */
 
 const countries = [
 
@@ -884,14 +733,10 @@ const countries = [
 
 ];
 
-const list=document.getElementById("list");
-
-/* COUNTER */
-
 document.getElementById("countryCount").innerHTML=countries.length;
 document.getElementById("routeCount").innerHTML=countries.length;
 
-/* RENDER */
+const list=document.getElementById("list");
 
 function render(data){
 
@@ -1000,6 +845,9 @@ card.onclick=function(e){
 if(e.target.classList.contains("smsInput"))
 return;
 
+clickSound.currentTime=0;
+clickSound.play();
+
 document.querySelectorAll(".card").forEach(el=>{
 if(el!==card){
 el.classList.remove("active");
@@ -1031,8 +879,6 @@ box.querySelector(".final").innerText=
 
 }
 
-/* SEARCH */
-
 render(countries);
 
 document.getElementById("search").addEventListener("input",e=>{
@@ -1044,44 +890,6 @@ c.name.toLowerCase().includes(value)
 );
 
 render(filtered);
-
-});
-
-/* LEADERBOARD */
-
-const leaderboard=document.getElementById("leaderboard");
-
-const sorted=[...countries]
-.sort((a,b)=>b.price-a.price)
-.slice(0,10);
-
-sorted.forEach((c,index)=>{
-
-leaderboard.innerHTML+=`
-
-<div class="lbCard">
-
-<div class="lbLeft">
-
-<div class="rank">
-#${index+1}
-</div>
-
-<img class="lbFlag" src="${c.flag}">
-
-<div class="lbName">
-${c.name}
-</div>
-
-</div>
-
-<div class="lbPrice">
-$${c.price}
-</div>
-
-</div>
-
-`;
 
 });
 
